@@ -9,7 +9,7 @@ import MyFirstComponent from './components/MyFirstComponent.vue';
   <img alt="Vue logo" src="./assets/logo.png" />
   <HelloWorld msg="Hello Vue 3 + Vite" />
   <MyFirstComponent></MyFirstComponent>
-  <p class="text-lg hoge foo">Large text(Tailwind CSS)</p>
+  <p class="text-lg hoge foo">Large Red text(Tailwind CSS)</p>
 </template>
 
 <style lang="scss" scoped>

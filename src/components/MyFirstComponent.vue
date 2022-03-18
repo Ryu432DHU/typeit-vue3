@@ -1,8 +1,8 @@
 <template>
   <p :style="alcoholicDrinkMsgStyle">age: {{ age }} / {{  alcoholicDrinkMsg }}</p>
   <div>
-    <button @click="incrementAge">+1 age</button>
-    <button @click="decrementAge">-1 age</button>
+    <button class="border-2 border-gray-500 mr-4 px-4 py-2 rounded-md" @click="incrementAge">+1 age</button>
+    <button class="border-2 border-gray-500 px-4 py-2 rounded-md" @click="decrementAge">-1 age</button>
   </div>
 </template>
 
