@@ -1,26 +1,18 @@
 <template>
   <ti-sheet>
     <div class="container mx-auto">
-    <MyFirstComponent alcoholicDrinkName="コーラ">
-      <template v-slot:header>
-        <p>Here might be a page title</p>
-      </template>
-      <template v-slot:footer>
-        <p>Here's some contact info</p>
-      </template>
-      <template v-slot:default><h1>Default slot</h1></template>
-    </MyFirstComponent>
-    <p>
-      <router-link to="/sub" class="underline">Go to the Sub.vue</router-link>
-    </p>
-    <p>
-      <router-link to="/not-existing-page" class="underline">Go to a not not-existing-page</router-link>
-    </p>
+      <div class="w-4/5 mx-auto">
+        <h2 class="text-2xl mb-4">Words | Word list name</h2>
+        <ti-word-chip-list :wordList="wordList"></ti-word-chip-list>
+      </div>
     </div>
   </ti-sheet>
 </template>
 
 <script setup>
-import MyFirstComponent from '../components/atoms/MyFirstComponent.vue';
+import { ref } from 'vue'
+import TiWordChipList from '../components/organisms/TiWordChipList.vue';
 import TiSheet from '../components/atoms/TiSheet.vue'
+
+const wordList = ref(["rounded-none","rounded-sm", "rounded", "rounded-md", "rounded-lg", "rouded-xl", "rounded-2xl", "rounded-3xl", "slate", "gray", "zinc", "neutral", "stone", "red", "orange", "50", "100", "200", "300", "400", "500", "600", "700", "800", "900"])
 </script>
