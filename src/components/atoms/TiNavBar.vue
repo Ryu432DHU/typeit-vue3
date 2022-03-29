@@ -5,16 +5,16 @@
         <router-link to="/">TypeIt</router-link>
       </h1>
       <ul class="flex">
-        <li class="text-white px-4 py-2">
+        <li class="text-white text-sm px-4 py-2">
           <router-link to="/">Home</router-link>
         </li>
-        <li class="text-white px-4 py-2">
+        <li class="text-white text-sm px-4 py-2">
           <router-link to="/rankings">Rankings</router-link>
         </li>
-        <li class="text-white px-4 py-2">
+        <li class="text-white text-sm px-4 py-2">
           <router-link to="/edit">Edit</router-link>
         </li>
-        <li class="text-white px-4 py-2">
+        <li class="text-white text-sm px-4 py-2">
           <a href="https://github.com/Ryu432DHU/typeit-vue3">GitHub</a>
         </li>
       </ul>
