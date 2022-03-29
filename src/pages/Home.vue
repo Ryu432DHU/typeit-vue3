@@ -2,7 +2,7 @@
   <ti-sheet>
     <div class="container mx-auto">
       <div class="w-4/5 mx-auto">
-        <h2 class="text-2xl mb-4">Words | Word list name will be here</h2>
+        <h2 class="text-2xl mb-4">Words | {{ wordListName }}</h2>
         <ti-word-chip-list :wordList="wordList[0].words"></ti-word-chip-list>
       </div>
     </div>
