@@ -1,6 +1,6 @@
 <template>
   <nav class="bg-neutral-900 py-4">
-    <div class="container max-w-5xl mx-auto flex justify-between">
+    <div class="container max-w-5xl w-10/12 mx-auto flex justify-between">
       <h1 class="text-2xl text-white font-light">
         <router-link to="/">TypeIt</router-link>
       </h1>
