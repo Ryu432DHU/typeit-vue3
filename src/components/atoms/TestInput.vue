@@ -1,14 +1,18 @@
 <template>
-  <p>{{ someInput }}</p>
+  <div>
+    <span>{{ modelValue }}</span>
+    <input type="text"
+           :value="modelValue"
+           @input="$emit('update:modelValue', $event.target.value)"
+           class="border border-slate-500"
+           placeholder="Input aaa here"
+    >
+  </div>
 </template>
 
-<scirpt setup>
-import { ref } from 'vue'
-
+<script setup>
 defineProps({
-  someInput: String
+  modelValue: String
 })
-
-const someLocalInput = ref("")
-
-</scirpt>
+defineEmits(['update:modelValue'])
+</script>
