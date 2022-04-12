@@ -1,32 +1,19 @@
 const wordLists = [
   {
-    name: "Example word list",
-    words: ["q", "we", "rty"],
-    timeRecords: [
-      {
-        time: 120,
-        date: new Date(),
-      },
-      {
-        time: 100,
-        date: new Date()
-      }
-    ]
+    name: "example",
+    words: ["qw", "er", "ty"],
+    records: [{ date: new Date(), time: 100 }]
   },
   {
-    name: "Country names",
-    words: ["germany", "France", "united kingdom"],
-    timeRecords: [
-      {
-        time: 120,
-        date: new Date(),
-      },
-      {
-        time: 100,
-        date: new Date()
-      }
-    ]
-  }
+    name: "Rounded",
+    words: ["rounded-none","rounded-sm", "rounded", "rounded-md", "rounded-lg", "rouded-xl", "rounded-2xl", "rounded-3xl"],
+    records: [{ date: new Date(), time: 100 }]
+  },
+  {
+    name: "Colors",
+    words: ["slate", "gray", "zinc", "neutral", "stone", "red", "orange", "50", "100", "200", "300", "400", "500", "600", "700", "800", "900"],
+    records: [{ date: new Date(), time: 100 }]
+  },
 ]
 
 export default function fetchWordLists(){

@@ -16,32 +16,16 @@
 
 <script setup>
 import { ref, computed, watch } from 'vue'
+import fetchWordLists from '../store/wordLists';
 import TiWordChipList from '../components/organisms/TiWordChipList.vue';
 import TiSheet from '../components/atoms/TiSheet.vue'
 import TiWordDisplay from '../components/atoms/TiWordDisplay.vue'
 import TiWordInputForm from '../components/atoms/TiWordInputForm.vue'
 import TiWordListSelector from '../components/organisms/TiWordListSelector.vue';
 
-const wordLists = [
-  {
-    name: "example",
-    words: ["qw", "er", "ty"],
-    records: [{ date: new Date(), time: 100 }]
-  },
-  {
-    name: "Rounded",
-    words: ["rounded-none","rounded-sm", "rounded", "rounded-md", "rounded-lg", "rouded-xl", "rounded-2xl", "rounded-3xl"],
-    records: [{ date: new Date(), time: 100 }]
-  },
-  {
-    name: "Colors",
-    words: ["slate", "gray", "zinc", "neutral", "stone", "red", "orange", "50", "100", "200", "300", "400", "500", "600", "700", "800", "900"],
-    records: [{ date: new Date(), time: 100 }]
-  },
-]
-
 const wordListName = ref("example")
 const changeWordList = newWordListName => wordListName.value = newWordListName
+const wordLists = fetchWordLists()
 
 const wordListWords = computed(() => {
   const wordList = wordLists.filter(wordList => wordList.name === wordListName.value)[0]
@@ -50,7 +34,7 @@ const wordListWords = computed(() => {
 })
 
 const currentWordIndex = ref(0)
-const currentWord = computed(() => wordListWords[currentWordIndex.value])
+const currentWord = computed(() => wordListWords.value[currentWordIndex.value])
 
 const wordInputFieldValue = ref("")
 const isGameFinished = ref(false)
