@@ -6,7 +6,6 @@
       <div class="w-11/12 mx-auto">
         <h2 class="text-2xl mb-4">Words | {{ wordListName }}</h2>
         <ti-word-chip-list :wordList="wordList[0].words"></ti-word-chip-list>
-        <test-input v-model="someInput"></test-input>
       </div>
     </div>
   </ti-sheet>
@@ -18,8 +17,6 @@ import TiWordChipList from '../components/organisms/TiWordChipList.vue';
 import TiSheet from '../components/atoms/TiSheet.vue'
 import TiWordDisplay from '../components/atoms/TiWordDisplay.vue'
 import TiWordInputForm from '../components/atoms/TiWordInputForm.vue'
-import TestInput from '../components/atoms/TestInput.vue';
-
 
 const wordLists = [
   {
@@ -58,10 +55,5 @@ watch(wordInputFieldValue, () => {
   } else {
     isGameFinished.value = true
   }
-})
-
-const someInput = ref("")
-watch(someInput, () => {
-  if(someInput.value === "aaa")someInput.value = ""
 })
 </script>
