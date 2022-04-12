@@ -6,18 +6,22 @@
       <div class="w-11/12 mx-auto">
         <h2 class="text-2xl mb-4">Words | {{ wordListName }}</h2>
         <ti-word-chip-list :wordList="wordList[0].words"></ti-word-chip-list>
+        <div>
+          <input class="border border-slate-500" type="text" v-model="someInput">
+          <span>{{ someInput }}</span>
+        </div>
       </div>
     </div>
   </ti-sheet>
 </template>
 
 <script setup>
-import { ref, watch } from 'vue'
+import { ref, computed, watch } from 'vue'
 import TiWordChipList from '../components/organisms/TiWordChipList.vue';
 import TiSheet from '../components/atoms/TiSheet.vue'
 import TiWordDisplay from '../components/atoms/TiWordDisplay.vue'
 import TiWordInputForm from '../components/atoms/TiWordInputForm.vue'
-import TiTimeRecorder from '../utils/TiTimeRecorder.js'
+
 
 const wordLists = [
   {
@@ -42,18 +46,26 @@ const wordList = wordLists.filter(wordList => wordList.name === wordListName.val
 
 const currentWordListWords = wordList[0].words
 const currentWordIndex = ref(0)
-const currentWord = ref(currentWordListWords[currentWordIndex.value])
+const currentWord = computed(() => currentWordListWords[currentWordIndex.value])
 
 const wordInputFieldValue = ref("")
 const isGameFinished = ref(false)
+const isNextWordExisting = computed(() => currentWordIndex.value < currentWordListWords.length)
 watch(wordInputFieldValue, () => {
-  if(currentWordIndex.value < currentWordListWords.length){
+  if(isNextWordExisting){
     if(wordInputFieldValue.value === currentWord.value){
-      currentWord.value = currentWordListWords[++currentWordIndex.value]
-      setTimeout(() => wordInputFieldValue.value = "", 0)
+      currentWordIndex.value++
+      console.log(wordInputFieldValue.value)
+      wordInputFieldValue.value = ""
+      console.log(wordInputFieldValue.value)
     }
   } else {
     isGameFinished.value = true
   }
+})
+
+const someInput = ref("")
+watch(someInput, () => {
+  if(someInput.value === "abc")someInput.value = ""
 })
 </script>
