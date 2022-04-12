@@ -5,7 +5,10 @@
     <div class="container mx-auto my-4">
       <div class="w-11/12 mx-auto">
         <h2 class="text-2xl mb-4">Words | {{ wordListName }}</h2>
-        <ti-word-chip-list :wordList="wordList[0].words"></ti-word-chip-list>
+        <ti-word-chip-list :wordList="wordListWords"></ti-word-chip-list>
+      </div>
+      <div class="w-11/12 mx-auto">
+        <ti-word-list-selector @changeWordList="changeWordList" :wordLists="wordLists" />
       </div>
     </div>
   </ti-sheet>
@@ -17,11 +20,12 @@ import TiWordChipList from '../components/organisms/TiWordChipList.vue';
 import TiSheet from '../components/atoms/TiSheet.vue'
 import TiWordDisplay from '../components/atoms/TiWordDisplay.vue'
 import TiWordInputForm from '../components/atoms/TiWordInputForm.vue'
+import TiWordListSelector from '../components/organisms/TiWordListSelector.vue';
 
 const wordLists = [
   {
     name: "example",
-    words: ["q", "we", "rty"],
+    words: ["qw", "er", "ty"],
     records: [{ date: new Date(), time: 100 }]
   },
   {
@@ -37,15 +41,20 @@ const wordLists = [
 ]
 
 const wordListName = ref("example")
-const wordList = wordLists.filter(wordList => wordList.name === wordListName.value)
+const changeWordList = newWordListName => wordListName.value = newWordListName
 
-const currentWordListWords = wordList[0].words
+const wordListWords = computed(() => {
+  const wordList = wordLists.filter(wordList => wordList.name === wordListName.value)[0]
+
+  return wordList.words
+})
+
 const currentWordIndex = ref(0)
-const currentWord = computed(() => currentWordListWords[currentWordIndex.value])
+const currentWord = computed(() => wordListWords[currentWordIndex.value])
 
 const wordInputFieldValue = ref("")
 const isGameFinished = ref(false)
-const isNextWordExisting = computed(() => currentWordIndex.value < currentWordListWords.length)
+const isNextWordExisting = computed(() => currentWordIndex.value < wordListWords.length)
 watch(wordInputFieldValue, () => {
   if(isNextWordExisting.value){
     if(wordInputFieldValue.value === currentWord.value){
