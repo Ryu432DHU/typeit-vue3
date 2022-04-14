@@ -1,6 +1,6 @@
 <template>
   <ti-sheet>
-    <ti-word-display :word="currentWord" :isGameFinished="isGameFinished"></ti-word-display>
+    <ti-word-display :word="currentWord" :gameState="gameState"></ti-word-display>
     <ti-word-input-form v-model="wordInputFieldValue"></ti-word-input-form>
     <div class="container mx-auto my-4">
       <div class="w-11/12 mx-auto">
@@ -8,7 +8,7 @@
         <ti-word-chip-list :wordList="wordListWords"></ti-word-chip-list>
       </div>
       <div class="w-11/12 mx-auto">
-        <ti-word-list-selector @changeWordList="changeWordList" :wordLists="wordLists" />
+        <ti-word-list-selector @changeWordList="changeWordListName" :wordLists="wordLists" />
       </div>
     </div>
   </ti-sheet>
@@ -24,21 +24,22 @@ import TiWordInputForm from '../components/atoms/TiWordInputForm.vue'
 import TiWordListSelector from '../components/organisms/TiWordListSelector.vue';
 
 const wordListName = ref("example")
-const changeWordList = newWordListName => wordListName.value = newWordListName
-const wordLists = fetchWordLists()
+const changeWordListName = newWordListName => wordListName.value = newWordListName
 
+const wordLists = fetchWordLists()
 const wordListWords = computed(() => {
   const wordList = wordLists.filter(wordList => wordList.name === wordListName.value)[0]
-
+  if(wordList.length === 0 || wordList === undefined) return new Error("Word list is empty or not existing")
   return wordList.words
 })
 
 const currentWordIndex = ref(0)
 const currentWord = computed(() => wordListWords.value[currentWordIndex.value])
-
 const wordInputFieldValue = ref("")
-const isGameFinished = ref(false)
+
+const gameState = ref("STAND_BY")
 const isNextWordExisting = computed(() => currentWordIndex.value < wordListWords.length)
+
 watch(wordInputFieldValue, () => {
   if(isNextWordExisting.value){
     if(wordInputFieldValue.value === currentWord.value){
@@ -46,7 +47,7 @@ watch(wordInputFieldValue, () => {
       wordInputFieldValue.value = ""
     }
   } else {
-    isGameFinished.value = true
+    gameState.value = "FINISHED"
   }
 })
 </script>
