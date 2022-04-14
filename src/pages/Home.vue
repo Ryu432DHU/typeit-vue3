@@ -24,12 +24,16 @@ import TiWordInputForm from '../components/atoms/TiWordInputForm.vue'
 import TiWordListSelector from '../components/organisms/TiWordListSelector.vue';
 
 const wordListName = ref("example")
-const changeWordListName = newWordListName => wordListName.value = newWordListName
+const changeWordListName = newWordListName => {
+  wordListName.value = newWordListName
+  gameState.value = "STAND_BY"
+  currentWordIndex.value = 0
+}
 
 const wordLists = fetchWordLists()
 const wordListWords = computed(() => {
   const wordList = wordLists.filter(wordList => wordList.name === wordListName.value)[0]
-  if(wordList.length === 0 || wordList === undefined) return new Error("Word list is empty or not existing")
+  if(wordList.length === 0 || wordList === undefined) return new Error("Word list you selected is empty or not existing")
   return wordList.words
 })
 
@@ -38,10 +42,12 @@ const currentWord = computed(() => wordListWords.value[currentWordIndex.value])
 const wordInputFieldValue = ref("")
 
 const gameState = ref("STAND_BY")
-const isNextWordExisting = computed(() => currentWordIndex.value < wordListWords.length)
+const isNextWordExisting = computed(() => currentWordIndex.value < wordListWords.value.length)
 
 watch(wordInputFieldValue, () => {
   if(isNextWordExisting.value){
+    if(gameState.value === "STAND_BY")gameState.value = "PLAYING"
+
     if(wordInputFieldValue.value === currentWord.value){
       currentWordIndex.value++
       wordInputFieldValue.value = ""

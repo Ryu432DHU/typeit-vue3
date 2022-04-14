@@ -1,30 +1,31 @@
 <template>
   <div class="relative">
-    <div class="inline-block text-sm absolute px-4 py-1" :class="stateChipClassList">state: {{ gameState }}</div>
-    <template v-if="gameState !== 'FINISHED'">
-      <div class="bg-neutral-800 text-white text-center text-2xl p-10">{{ word }}</div>
+    <div class="inline-block text-sm text-white absolute px-4 py-1" :class="stateChipColor">state: {{ gameState }}</div>
+    <template v-if="gameState === 'FINISHED'">
+      <div class="bg-green-600 text-white text-center text-2xl p-10">Clear Time: </div>
     </template>
     <template v-else>
-      <div class="bg-green-600 text-white text-center text-2xl p-10">Clear Time: </div>
+      <div class="bg-neutral-800 text-white text-center text-2xl p-10">{{ word }}</div>
     </template>
   </div>
 </template>
 
 <script setup>
+import { computed } from 'vue';
+
 const props = defineProps({
   word: String,
   gameState: String
 })
 
-let gameStateColor;
-
-if(props.gameState === "STAND_BY"){
-  gameStateColor = "orange"
-} else if(props.gameState === "PLAYING"){
-  gameStateColor = "cyan"
-} else if("FINISHED"){
-  gameStateColor = "green"
-}
-
-const stateChipClassList = [`bg-${gameStateColor}-500`, "text-white"]
+const stateChipColor = computed(() => {
+  const state = props.gameState
+  if(state === "STAND_BY"){
+    return "bg-orange-500"
+  } else if(state === "PLAYING"){
+    return "bg-cyan-500"
+  } else if(state === "FINISHED"){
+    return "bg-green-500"
+  }
+})
 </script>
