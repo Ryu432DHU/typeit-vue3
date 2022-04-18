@@ -9,7 +9,7 @@
       <span>{{ wordList.name }}</span>
     </td>
     <td>
-      <button @click="$emit('changeWordList', wordList.name)" class="border border-slate-300 px-4 py-1">Play</button>
+      <ti-button @click="$emit('changeWordList', wordList.name)">Play</ti-button>
     </td>
     </tr>
   </ti-simple-table>
@@ -17,6 +17,7 @@
 
 <script setup>
 import TiSimpleTable from '../atoms/TiSimpleTable.vue'
+import TiButton from '../atoms/TiButton.vue'
 
 defineProps({
   wordLists: Array
