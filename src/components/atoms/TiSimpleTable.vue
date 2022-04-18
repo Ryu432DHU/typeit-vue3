@@ -12,8 +12,8 @@ table {
     border-bottom: solid 1px #e2e8f0;
 
     th, td {
-      height: 2.25rem;
-      line-height: 2.25rem;
+      height: 3rem;
+      line-height: 3rem;
       text-align: left;
       padding-left: 1rem;
     }
