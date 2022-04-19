@@ -2,12 +2,13 @@
   <ti-sheet>
     <ti-word-display :word="currentWord" :gameState="gameState"></ti-word-display>
     <ti-word-input-form v-model="wordInputFieldValue"></ti-word-input-form>
-    <div class="container mx-auto my-4">
-      <div class="w-11/12 mx-auto">
+    <div class="container mx-auto my-4 pb-8">
+      <div class="w-11/12 mx-auto mb-4">
         <h2 class="text-2xl mb-4">Words | {{ wordListName }}</h2>
         <ti-word-chip-list :wordList="wordListWords"></ti-word-chip-list>
       </div>
       <div class="w-11/12 mx-auto">
+        <h2 class="text-2xl mb-4">Play</h2>
         <ti-word-list-selector @changeWordList="changeWordListName" :wordLists="wordLists" />
       </div>
     </div>
