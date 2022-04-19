@@ -2,12 +2,14 @@
   <ti-simple-table>
     <tr>
       <th>Word list</th>
+      <th>Length</th>
       <th>Action</th>
     </tr>
     <tr v-for="wordList in wordLists">
     <td>
       <span>{{ wordList.name }}</span>
     </td>
+    <td>{{ wordList.words.length }} words</td>
     <td>
       <ti-button @click="$emit('changeWordList', wordList.name)">Play</ti-button>
     </td>
