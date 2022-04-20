@@ -22,7 +22,6 @@ table {
       color: #717171;
       font-size: 0.75rem;
       font-weight: bolder;
-      text-transform: uppercase;
     }
 
     td {
