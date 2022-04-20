@@ -27,7 +27,8 @@ export default class TiTimeRecorder {
     if(this.timeRecordingStarted && this.timeRecordingStopped){
       return this.timeRecordingStopped.getTime() - this.timeRecordingStarted.getTime()
     } else {
-      throw new Error("Time recording is not started yet!")
+      // throw new Error("Time recording is not started yet!")
+      return "Time recording is not started yet!"
     }
   }
 }
