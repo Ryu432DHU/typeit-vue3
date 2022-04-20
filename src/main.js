@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import App from './App.vue'
 import HomeVue from './pages/Home.vue'
 import SubVue from './pages/Sub.vue'
+import Rankings from './pages/Rankings.vue'
 import NotFoundVue from './pages/NotFound.vue'
 import "./index.scss"
 
@@ -12,6 +13,9 @@ const routes = [
   },
   {
     path: "/sub", component: SubVue
+  },
+  {
+    path: "/rankings", component: Rankings
   },
   {
     path: "/:pathMatch(.*)*", component: NotFoundVue
