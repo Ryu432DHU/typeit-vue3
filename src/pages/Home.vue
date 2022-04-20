@@ -62,7 +62,7 @@ const currentWord = computed(() => wordList.value.words[currentWordIndex.value])
 const wordInputFieldValue = ref("")
 
 const gameState = ref("STAND_BY")
-const isNextWordExisting = computed(() => currentWordIndex.value < wordList.value.words.value.length)
+const isNextWordExisting = computed(() => currentWordIndex.value < wordList.value.words.length)
 
 const timeRecorder = reactive(new TiTimeRecorder())
 const clearTime = computed(() => timeRecorder.calc())
