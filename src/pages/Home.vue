@@ -5,11 +5,28 @@
     <div class="container mx-auto my-4 pb-8">
       <div class="w-11/12 mx-auto mb-4">
         <h2 class="text-2xl mb-4">Words | {{ wordListName }}</h2>
-        <ti-word-chip-list :wordList="wordListWords"></ti-word-chip-list>
+        <ti-word-chip-list :wordList="wordList.words"></ti-word-chip-list>
       </div>
-      <div class="w-11/12 mx-auto">
+      <div class="w-11/12 mx-auto mb-4">
         <h2 class="text-2xl mb-4">Play</h2>
         <ti-word-list-selector @changeWordList="changeWordListName" :wordLists="wordLists" />
+      </div>
+      <div class="w-11/12 mx-auto">
+        <h2 class="text-2xl mb-4">Ranking</h2>
+        <ti-simple-table>
+          <tr>
+            <th>No.</th>
+            <th>Length</th>
+            <th>time</th>
+            <th>Date</th>
+          </tr>
+          <tr v-for="(record, index) in wordList.records">
+            <td>{{ index + 1 }}</td>
+            <td>{{ wordList.words.length }} words</td>
+            <td>{{ record.time }} seconds</td>
+            <td>{{ record.date.toLocaleString() }}</td>
+          </tr>
+        </ti-simple-table>
       </div>
     </div>
   </ti-sheet>
@@ -24,6 +41,7 @@ import TiWordDisplay from '../components/atoms/TiWordDisplay.vue'
 import TiWordInputForm from '../components/atoms/TiWordInputForm.vue'
 import TiWordListSelector from '../components/organisms/TiWordListSelector.vue';
 import TiTimeRecorder from '../utils/TiTimeRecorder';
+import TiSimpleTable from '../components/atoms/TiSimpleTable.vue';
 
 const wordListName = ref("example")
 const changeWordListName = newWordListName => {
@@ -33,18 +51,18 @@ const changeWordListName = newWordListName => {
 }
 
 const wordLists = fetchWordLists()
-const wordListWords = computed(() => {
+const wordList = computed(() => {
   const wordList = wordLists.filter(wordList => wordList.name === wordListName.value)[0]
-  if(wordList.length === 0 || wordList === undefined) return new Error("Word list you selected is empty or not existing")
-  return wordList.words
+  if(wordList.length === 0 || wordList === undefined) return new Error("The ord list you selected is empty or not existing")
+  return wordList
 })
 
 const currentWordIndex = ref(0)
-const currentWord = computed(() => wordListWords.value[currentWordIndex.value])
+const currentWord = computed(() => wordList.value.words[currentWordIndex.value])
 const wordInputFieldValue = ref("")
 
 const gameState = ref("STAND_BY")
-const isNextWordExisting = computed(() => currentWordIndex.value < wordListWords.value.length)
+const isNextWordExisting = computed(() => currentWordIndex.value < wordList.value.words.value.length)
 
 const timeRecorder = reactive(new TiTimeRecorder())
 const clearTime = computed(() => timeRecorder.calc())
