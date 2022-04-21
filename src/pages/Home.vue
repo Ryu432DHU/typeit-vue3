@@ -7,26 +7,32 @@
         <h2 class="text-2xl mb-4">Words | {{ wordListName }}</h2>
         <ti-word-chip-list :wordList="wordList.words"></ti-word-chip-list>
       </div>
-      <div class="w-11/12 mx-auto mb-4">
-        <h2 class="text-2xl mb-4">Play</h2>
-        <ti-word-list-selector @changeWordList="changeWordListName" :wordLists="wordLists" />
-      </div>
-      <div class="w-11/12 mx-auto">
-        <h2 class="text-2xl mb-4">Ranking</h2>
-        <ti-simple-table>
-          <tr>
-            <th>No.</th>
-            <th>Length</th>
-            <th>time</th>
-            <th>Date</th>
-          </tr>
-          <tr v-for="(record, index) in wordList.records">
-            <td>{{ index + 1 }}</td>
-            <td>{{ wordList.words.length }} words</td>
-            <td>{{ record.time }} seconds</td>
-            <td>{{ record.date.toLocaleString() }}</td>
-          </tr>
-        </ti-simple-table>
+      <div class="lg:flex w-11/12 mx-auto lg:justify-between">
+        <div class="sm:w-full lg:w-6/12 mb-4">
+          <div class="w-11/12">
+            <h2 class="text-2xl mb-4">Ranking</h2>
+            <ti-simple-table>
+              <tr>
+                <th>No.</th>
+                <th>Length</th>
+                <th>time</th>
+                <th>Date</th>
+              </tr>
+              <tr v-for="(record, index) in wordList.records">
+                <td>{{ index + 1 }}</td>
+                <td>{{ wordList.words.length }} words</td>
+                <td>{{ record.time }} seconds</td>
+                <td>{{ record.date.toLocaleString() }}</td>
+              </tr>
+            </ti-simple-table>
+          </div>
+        </div>
+        <div class="sm:w-full lg:w-6/12">
+          <div class="w-11/12">
+            <h2 class="text-2xl mb-4">Play</h2>
+            <ti-word-list-selector @changeWordList="changeWordListName" :wordLists="wordLists" />
+          </div>
+        </div>
       </div>
     </div>
   </ti-sheet>
