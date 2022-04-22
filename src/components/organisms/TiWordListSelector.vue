@@ -11,7 +11,7 @@
     </td>
     <td>{{ wordList.words.length }} words</td>
     <td>
-      <ti-button @click="$emit('changeWordList', wordList.name)">Play</ti-button>
+      <ti-button @click="$emit('selectWordList', wordList.name)">Play</ti-button>
     </td>
     </tr>
   </ti-simple-table>
@@ -24,6 +24,6 @@ import TiButton from '../atoms/TiButton.vue'
 defineProps({
   wordLists: Array
 })
-defineEmits(['changeWordList'])
+defineEmits(['selectWordList'])
 
 </script>

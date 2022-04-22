@@ -10,7 +10,7 @@
       <div class="lg:flex w-11/12 mx-auto lg:justify-between">
         <div class="sm:w-full lg:w-6/12 mb-4">
           <div class="w-11/12">
-            <h2 class="text-2xl mb-4">Ranking</h2>
+            <h2 class="text-2xl mb-4">Rankings</h2>
             <ti-simple-table>
               <tr>
                 <th>No.</th>
@@ -30,7 +30,7 @@
         <div class="sm:w-full lg:w-6/12">
           <div class="w-11/12">
             <h2 class="text-2xl mb-4">Play</h2>
-            <ti-word-list-selector @changeWordList="changeWordListName" :wordLists="wordLists" />
+            <ti-word-list-selector @selectWordList="selectWordListName" :wordLists="wordLists" />
           </div>
         </div>
       </div>
@@ -50,7 +50,7 @@ import TiTimeRecorder from '../utils/TiTimeRecorder';
 import TiSimpleTable from '../components/atoms/TiSimpleTable.vue';
 
 const wordListName = ref("example")
-const changeWordListName = newWordListName => {
+const selectWordListName = newWordListName => {
   wordListName.value = newWordListName
   gameState.value = "STAND_BY"
   currentWordIndex.value = 0
