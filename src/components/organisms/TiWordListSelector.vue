@@ -11,7 +11,12 @@
     </td>
     <td>{{ wordList.words.length }} words</td>
     <td>
-      <ti-button @click="$emit('selectWordList', wordList.name)">Play</ti-button>
+      <template v-if="selectedWordList.name === wordList.name">
+        <ti-button disabled>Selected</ti-button>
+      </template>
+      <template v-else>
+        <ti-button @click="$emit('selectWordList', wordList.name)">Play</ti-button>
+      </template>
     </td>
     </tr>
   </ti-simple-table>
@@ -22,7 +27,8 @@ import TiSimpleTable from '../atoms/TiSimpleTable.vue'
 import TiButton from '../atoms/TiButton.vue'
 
 defineProps({
-  wordLists: Array
+  wordLists: Array,
+  selectedWordList: Object
 })
 defineEmits(['selectWordList'])
 
