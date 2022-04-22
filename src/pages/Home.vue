@@ -11,20 +11,7 @@
         <div class="sm:w-full lg:w-6/12 mb-4">
           <div class="w-11/12">
             <h2 class="text-2xl mb-4">Rankings</h2>
-            <ti-simple-table>
-              <tr>
-                <th>No.</th>
-                <th>Length</th>
-                <th>time</th>
-                <th>Date</th>
-              </tr>
-              <tr v-for="(record, index) in wordList.records">
-                <td>{{ index + 1 }}</td>
-                <td>{{ wordList.words.length }} words</td>
-                <td>{{ record.time }} seconds</td>
-                <td>{{ record.date.toLocaleString() }}</td>
-              </tr>
-            </ti-simple-table>
+            <ti-ranking-list :wordList="wordList"></ti-ranking-list>
           </div>
         </div>
         <div class="sm:w-full lg:w-6/12">
@@ -47,7 +34,8 @@ import TiWordDisplay from '../components/atoms/TiWordDisplay.vue'
 import TiWordInputForm from '../components/atoms/TiWordInputForm.vue'
 import TiWordListSelector from '../components/organisms/TiWordListSelector.vue';
 import TiTimeRecorder from '../utils/TiTimeRecorder';
-import TiSimpleTable from '../components/atoms/TiSimpleTable.vue';
+import TiRankingList from '../components/organisms/TiRankingList.vue';
+import TiRankingList1 from '../components/organisms/TiRankingList.vue';
 
 const wordListName = ref("example")
 const selectWordListName = newWordListName => {
