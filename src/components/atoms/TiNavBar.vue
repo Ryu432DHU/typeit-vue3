@@ -36,8 +36,5 @@ const routes = [
 
 const linkColors = computed(() => routes.map(route => route.path === router.currentRoute.value.path ? 'text-white' : 'text-neutral-400'))
 
-watch(router.currentRoute, () => {
-  console.log(router.currentRoute.value)
-  console.log(routes.map(route => route.path === router.currentRoute.value.path))
-})
+watch(router.currentRoute, () => console.log(router.currentRoute.value))
 </script>

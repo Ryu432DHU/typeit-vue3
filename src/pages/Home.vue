@@ -1,6 +1,6 @@
 <template>
   <ti-sheet>
-    <ti-word-display :word="currentWord" :gameState="gameState" :clearTime="clearTime"></ti-word-display>
+    <ti-word-display :word="currentWord" :gameState="gameState" :inputAccuracyCollections="inputAccuracyCollections" :clearTime="clearTime"></ti-word-display>
     <ti-word-input-form v-model="wordInputFieldValue"></ti-word-input-form>
     <div class="container mx-auto my-4 pb-8">
       <div class="w-11/12 mx-auto mb-4">
@@ -35,7 +35,6 @@ import TiWordInputForm from '../components/atoms/TiWordInputForm.vue'
 import TiWordListSelector from '../components/organisms/TiWordListSelector.vue';
 import TiTimeRecorder from '../utils/TiTimeRecorder';
 import TiRankingList from '../components/organisms/TiRankingList.vue';
-import TiRankingList1 from '../components/organisms/TiRankingList.vue';
 
 const wordListName = ref("example")
 const selectWordListName = newWordListName => {
@@ -47,7 +46,7 @@ const selectWordListName = newWordListName => {
 const wordLists = fetchWordLists()
 const wordList = computed(() => {
   const wordList = wordLists.filter(wordList => wordList.name === wordListName.value)[0]
-  if(wordList.length === 0 || wordList === undefined) return new Error("The ord list you selected is empty or not existing")
+  if(wordList.length === 0 || wordList === undefined) return new Error("The word list you selected is empty or not existing")
   return wordList
 })
 
@@ -75,6 +74,16 @@ watch(wordInputFieldValue, () => {
   } else {
     gameState.value = "FINISHED"
     timeRecorder.stop()
+  }
+})
+
+const inputAccuracyCollections = computed(() => {
+  if(isNextWordExisting.value){
+    if(wordInputFieldValue.value.length <= currentWord.value.length){
+      return wordInputFieldValue.value.split("").map((letter, index) => letter === currentWord.value[index])
+    } else {
+      return currentWord.value.split("").map((letter, index) => letter === wordInputFieldValue.value[index])
+    }
   }
 })
 </script>

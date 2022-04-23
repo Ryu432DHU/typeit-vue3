@@ -5,7 +5,9 @@
       <div class="bg-green-600 text-white text-center text-2xl p-10">Clear Time: {{ fixedClearTime }} seconds</div>
     </template>
     <template v-else>
-      <div class="bg-neutral-800 text-white text-center text-2xl p-10">{{ word }}</div>
+      <div class="bg-neutral-800 text-white text-center text-2xl p-10">
+        <span v-for="(letter, index) in word.split('')" :class="computeHighlightColor(inputAccuracyCollections[index])">{{ letter }}</span>
+      </div>
     </template>
   </div>
 </template>
@@ -15,9 +17,20 @@ import { computed } from 'vue';
 
 const props = defineProps({
   word: String,
+  inputAccuracyCollections: Array,
   gameState: String,
   clearTime: [Number, String]
 })
+
+const computeHighlightColor = value => {
+  if(value === true){
+    return "text-green-500"
+  } else if(value === false){
+    return "text-red-500"
+  } else if(value === undefined){
+    return ""
+  }
+}
 
 const fixedClearTime = computed(() => {
   if(typeof props.clearTime === "number"){
