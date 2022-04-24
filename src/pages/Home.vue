@@ -27,7 +27,6 @@
 
 <script setup>
 import { ref, reactive, computed, watch, nextTick } from 'vue'
-import fetchWordLists from '../store/wordLists';
 import TiWordChipList from '../components/organisms/TiWordChipList.vue';
 import TiSheet from '../components/atoms/TiSheet.vue'
 import TiWordDisplay from '../components/atoms/TiWordDisplay.vue'
@@ -35,8 +34,10 @@ import TiWordInputForm from '../components/atoms/TiWordInputForm.vue'
 import TiWordListSelector from '../components/organisms/TiWordListSelector.vue';
 import TiTimeRecorder from '../utils/TiTimeRecorder';
 import TiRankingList from '../components/organisms/TiRankingList.vue';
+import { useWordLists } from '../pages/composables/useWordLists.js';
 
-const wordListName = ref("example")
+
+const { wordLists, wordList, wordListName } = useWordLists()
 const selectWordListName = newWordListName => {
   wordListName.value = newWordListName
   currentWordIndex.value = 0
@@ -45,12 +46,6 @@ const selectWordListName = newWordListName => {
   nextTick(() => gameState.value = "STAND_BY")
 }
 
-const wordLists = fetchWordLists()
-const wordList = computed(() => {
-  const wordList = wordLists.filter(wordList => wordList.name === wordListName.value)[0]
-  if(wordList.length === 0 || wordList === undefined) return new Error("The word list you selected is empty or not existing")
-  return wordList
-})
 
 const currentWordIndex = ref(0)
 const currentWord = computed(() => wordList.value.words[currentWordIndex.value])
