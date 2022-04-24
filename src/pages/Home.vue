@@ -26,7 +26,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, computed, watch } from 'vue'
+import { ref, reactive, computed, watch, nextTick } from 'vue'
 import fetchWordLists from '../store/wordLists';
 import TiWordChipList from '../components/organisms/TiWordChipList.vue';
 import TiSheet from '../components/atoms/TiSheet.vue'
@@ -39,8 +39,10 @@ import TiRankingList from '../components/organisms/TiRankingList.vue';
 const wordListName = ref("example")
 const selectWordListName = newWordListName => {
   wordListName.value = newWordListName
-  gameState.value = "STAND_BY"
   currentWordIndex.value = 0
+  wordInputFieldValue.value = ""
+  timeRecorder.init()
+  nextTick(() => gameState.value = "STAND_BY")
 }
 
 const wordLists = fetchWordLists()
