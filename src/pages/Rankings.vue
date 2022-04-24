@@ -12,7 +12,7 @@
             <th>Date</th>
           </tr>
           <tr v-for="(record, index) in wordList.records">
-            <td>{{ index }}</td>
+            <td>{{ index + 1 }}</td>
             <td>{{ wordList.words.length }} words</td>
             <td>{{ record.time }} seconds</td>
             <td>{{ record.date.toLocaleString() }}</td>

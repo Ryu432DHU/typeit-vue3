@@ -1,7 +1,7 @@
 <template>
   <ti-simple-table>
     <tr>
-      <th>Word list</th>
+      <th>Name</th>
       <th>Length</th>
       <th>Action</th>
     </tr>

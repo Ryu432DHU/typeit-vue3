@@ -16,7 +16,7 @@
         </div>
         <div class="sm:w-full lg:w-6/12">
           <div class="w-11/12">
-            <h2 class="text-2xl mb-4">Play</h2>
+            <h2 class="text-2xl mb-4">Word lists</h2>
             <ti-word-list-selector @selectWordList="selectWordListName" :wordLists="wordLists" :selectedWordList="wordList" />
           </div>
         </div>
