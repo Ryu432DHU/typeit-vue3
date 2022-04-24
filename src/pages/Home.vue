@@ -69,8 +69,10 @@ watch(wordInputFieldValue, () => {
       wordInputFieldValue.value = ""
     }
   } else {
-    gameState.value = "FINISHED"
-    timeRecorder.stop()
+    if(gameState.value === "PLAYING"){
+      gameState.value = "FINISHED"
+      timeRecorder.stop()
+    }
   }
 })
 
