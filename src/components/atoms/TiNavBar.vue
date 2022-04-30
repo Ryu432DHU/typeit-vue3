@@ -17,24 +17,16 @@
 </template>
 
 <script setup>
-import { computed, watch } from 'vue';
+import { computed } from 'vue';
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
 const routes = [
-  {
-    path: "/", text: "Home"
-  },
-  {
-    path: "/rankings", text: "Rankings"
-  },
-  {
-    path: "/edit", text: "Edit"
-  },
+  { path: "/", text: "Home" },
+  { path: "/rankings", text: "Rankings" },
+  { path: "/edit", text: "Edit" },
 ]
 
 const linkColors = computed(() => routes.map(route => route.path === router.currentRoute.value.path ? 'text-white' : 'text-neutral-400'))
-
-watch(router.currentRoute, () => console.log(router.currentRoute.value))
 </script>

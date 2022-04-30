@@ -21,12 +21,14 @@
           </div>
         </div>
       </div>
+      <button @click="addTimeRecord('example', { date: new Date(), time: 0.1})">Add record</button>
+      <p>{{ wordList.records }}</p>
     </div>
   </ti-sheet>
 </template>
 
 <script setup>
-import { ref, reactive, computed, watch, nextTick } from 'vue'
+import { ref, reactive, computed, watch, nextTick, inject } from 'vue'
 import TiWordChipList from '../components/organisms/TiWordChipList.vue';
 import TiSheet from '../components/atoms/TiSheet.vue'
 import TiWordDisplay from '../components/atoms/TiWordDisplay.vue'
@@ -36,8 +38,16 @@ import TiTimeRecorder from '../utils/TiTimeRecorder';
 import TiRankingList from '../components/organisms/TiRankingList.vue';
 import { useWordLists } from '../pages/composables/useWordLists.js';
 
+const addTimeRecord = inject("addTimeRecord")
 
-const { wordLists, wordList, wordListName } = useWordLists()
+// const { wordLists, wordList, wordListName } = useWordLists()
+const wordListName = ref("example")
+const wordLists = inject("providedWordLists")
+const wordList = computed(() => {
+  const wordList = wordLists.filter(wordList => wordList.name === wordListName.value)
+  if(wordList.length === 0 || wordList === undefined) return new Error("The word list you selected is empty or not existing")
+  return wordList[0]
+})
 const selectWordListName = newWordListName => {
   wordListName.value = newWordListName
   currentWordIndex.value = 0
@@ -72,7 +82,7 @@ watch(wordInputFieldValue, () => {
     if(gameState.value === "PLAYING"){
       gameState.value = "FINISHED"
       timeRecorder.stop()
-      wordList.value.records.push({ date: new Date(), time: timeRecorder.getRoundedTime()})
+      addTimeRecord(wordListName.value, { date: new Date(), time: timeRecorder.getRoundedTime()})
     }
   }
 })
