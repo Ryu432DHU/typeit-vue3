@@ -2,7 +2,11 @@ const wordLists = [
   {
     name: "example",
     words: ["qw", "er", "ty"],
-    records: [{ date: new Date(), time: 50 }, { date: new Date(), time: 100 }, { date: new Date(), time: 90 }]
+    records: [
+        { "date": "2022-04-30T12:40:17.323Z", "time": 0.9 },
+        { "date": "2022-04-30T12:40:11.928Z", "time": 1 },
+        { "date": "2022-04-30T12:40:06.503Z", "time": 1.1 },
+    ]
   },
   {
     name: "Rounded",

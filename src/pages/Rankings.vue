@@ -15,7 +15,7 @@
             <td>{{ index + 1 }}</td>
             <td>{{ wordList.words.length }} words</td>
             <td>{{ record.time }} seconds</td>
-            <td>{{ record.date.toLocaleString() }}</td>
+            <td>{{ new Date(record.date).toLocaleString() }}</td>
           </tr>
         </TiSimpleTable>
       </div>

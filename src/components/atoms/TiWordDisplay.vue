@@ -2,7 +2,7 @@
   <div class="relative">
     <div class="inline-block text-sm text-white absolute px-4 py-1" :class="stateChipColor">state: {{ gameState }}</div>
     <template v-if="gameState === 'FINISHED'">
-      <div class="bg-green-600 text-white text-center text-2xl p-10">Clear Time: {{ fixedClearTime }} seconds</div>
+      <div class="bg-green-600 text-white text-center text-2xl p-10">Clear Time: {{ clearTime }} seconds</div>
     </template>
     <template v-else>
       <div class="bg-neutral-800 text-white text-center text-2xl p-10">
@@ -31,14 +31,6 @@ const computeHighlightColor = value => {
     return ""
   }
 }
-
-const fixedClearTime = computed(() => {
-  if(typeof props.clearTime === "number"){
-    return Math.round((props.clearTime / 1000) * 10) / 10
-  } else if(typeof props.clearTime === "string"){
-    return ""
-  }
-})
 
 const stateChipColor = computed(() => {
   const state = props.gameState

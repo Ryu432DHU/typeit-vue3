@@ -35,4 +35,12 @@ export default class TiTimeRecorder {
       return "Time recording is not started yet!"
     }
   }
+
+  getRoundedTime(){
+    if(this.timeRecordingStarted && this.timeRecordingStopped){
+        return Math.round((this.calc() / 1000) * 10) / 10
+    } else {
+      return "Time recording is not started yet!"
+    }
+  }
 }

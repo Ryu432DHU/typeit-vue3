@@ -1,6 +1,6 @@
 <template>
   <ti-sheet>
-    <ti-word-display :word="currentWord" :gameState="gameState" :inputAccuracyCollections="inputAccuracyCollections" :clearTime="clearTime"></ti-word-display>
+    <ti-word-display :word="currentWord" :gameState="gameState" :inputAccuracyCollections="inputAccuracyCollections" :clearTime="getRoundedClerTime"></ti-word-display>
     <ti-word-input-form v-model="wordInputFieldValue"></ti-word-input-form>
     <div class="container mx-auto my-4 pb-8">
       <div class="w-11/12 mx-auto mb-4">
@@ -55,7 +55,7 @@ const gameState = ref("STAND_BY")
 const isNextWordExisting = computed(() => currentWordIndex.value < wordList.value.words.length)
 
 const timeRecorder = reactive(new TiTimeRecorder())
-const clearTime = computed(() => timeRecorder.calc())
+const getRoundedClerTime = computed(() => timeRecorder.getRoundedTime())
 
 watch(wordInputFieldValue, () => {
   if(isNextWordExisting.value){
@@ -72,6 +72,7 @@ watch(wordInputFieldValue, () => {
     if(gameState.value === "PLAYING"){
       gameState.value = "FINISHED"
       timeRecorder.stop()
+      wordList.value.records.push({ date: new Date(), time: timeRecorder.getRoundedTime()})
     }
   }
 })
