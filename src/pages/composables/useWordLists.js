@@ -1,14 +1,15 @@
-import { ref, reactive, computed } from 'vue'
-import fetchWordLists from '../../store/wordLists.js';
-
+import { ref, computed, inject } from 'vue'
 
 export function useWordLists(){
   const wordListName = ref("example")
-  const wordLists = reactive(fetchWordLists())
+  const wordLists = inject("providedWordLists")
   const wordList = computed(() => {
-    const wordList = wordLists.filter(wordList => wordList.name === wordListName.value)[0]
-    if(wordList.length === 0 || wordList === undefined) return new Error("The word list you selected is empty or not existing")
-    return wordList
+    const result = wordLists.filter(wordList => wordList.name === wordListName.value)
+    if(result.length >= 1 && result !== undefined){
+      return result[0]
+    } else {
+      throw new Error("The word list you selected is empty or not existing")
+    }
   })
 
   return { wordLists, wordList, wordListName }
