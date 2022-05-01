@@ -35,6 +35,7 @@ import TiWordListSelector from '../components/organisms/TiWordListSelector.vue';
 import TiTimeRecorder from '../utils/TiTimeRecorder';
 import TiRankingList from '../components/organisms/TiRankingList.vue';
 import { useWordLists } from '../pages/composables/useWordLists.js';
+import { useTypingGame } from './composables/useTypingGame';
 
 
 const { wordLists, wordList, wordListName } = useWordLists()
@@ -46,36 +47,15 @@ const selectWordListName = newWordListName => {
   nextTick(() => gameState.value = "STAND_BY")
 }
 
-const currentWordIndex = ref(0)
-const currentWord = computed(() => wordList.value.words[currentWordIndex.value])
-const wordInputFieldValue = ref("")
-
-const gameState = ref("STAND_BY")
-const isNextWordExisting = computed(() => currentWordIndex.value < wordList.value.words.length)
-
-const timeRecorder = reactive(new TiTimeRecorder())
-const getRoundedClerTime = computed(() => timeRecorder.getRoundedTime())
-const addTimeRecord = inject("addTimeRecord")
-
-watch(wordInputFieldValue, () => {
-  if(isNextWordExisting.value){
-    if(gameState.value === "STAND_BY"){
-      gameState.value = "PLAYING"
-      timeRecorder.start()
-    }
-
-    if(wordInputFieldValue.value === currentWord.value){
-      currentWordIndex.value++
-      wordInputFieldValue.value = ""
-    }
-  } else {
-    if(gameState.value === "PLAYING"){
-      gameState.value = "FINISHED"
-      timeRecorder.stop()
-      addTimeRecord(wordListName.value, { date: new Date(), time: timeRecorder.getRoundedTime()})
-    }
-  }
-})
+const {
+  currentWordIndex,
+  currentWord,
+  wordInputFieldValue,
+  gameState,
+  isNextWordExisting,
+  timeRecorder,
+  getRoundedClerTime,
+} = computed(() => useTypingGame(wordList)).value
 
 const inputAccuracyCollections = computed(() => {
   if(isNextWordExisting.value){
@@ -86,4 +66,6 @@ const inputAccuracyCollections = computed(() => {
     }
   }
 })
+
 </script>
+
