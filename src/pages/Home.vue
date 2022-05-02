@@ -32,11 +32,9 @@ import TiSheet from '../components/atoms/TiSheet.vue'
 import TiWordDisplay from '../components/atoms/TiWordDisplay.vue'
 import TiWordInputForm from '../components/atoms/TiWordInputForm.vue'
 import TiWordListSelector from '../components/organisms/TiWordListSelector.vue';
-import TiTimeRecorder from '../utils/TiTimeRecorder';
 import TiRankingList from '../components/organisms/TiRankingList.vue';
 import { useWordLists } from '../pages/composables/useWordLists.js';
 import { useTypingGame } from './composables/useTypingGame';
-
 
 const { wordLists, wordList, wordListName } = useWordLists()
 const selectWordListName = newWordListName => {
@@ -66,6 +64,5 @@ const inputAccuracyCollections = computed(() => {
     }
   }
 })
-
 </script>
 
