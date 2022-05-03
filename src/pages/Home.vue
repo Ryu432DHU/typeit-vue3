@@ -5,7 +5,7 @@
     <div class="container mx-auto my-4 pb-8">
       <div class="w-11/12 mx-auto mb-4">
         <h2 class="text-2xl mb-4">Words | {{ wordListName }}</h2>
-        <ti-word-chip-list :wordList="wordList.words"></ti-word-chip-list>
+        <ti-word-chip-list :wordList="wordList.words" :currentWordIndex="currentWordIndex"></ti-word-chip-list>
       </div>
       <div class="lg:flex w-11/12 mx-auto lg:justify-between">
         <div class="sm:w-full lg:w-6/12 mb-4">
