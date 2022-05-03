@@ -1,5 +1,5 @@
 <template>
-  <span class="text-sm bg-neutral-200 rounded-full mr-2 mb-1 px-3 py-2" :class="chipStyle(color)">
+  <span class="text-xs bg-neutral-200 rounded-full mr-2 mb-1 px-3 py-2" :class="chipStyle(color)">
     <slot></slot>
   </span>
 </template>
