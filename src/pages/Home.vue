@@ -27,13 +27,13 @@
 
 <script setup>
 import { ref, reactive, computed, watch, nextTick, inject } from 'vue'
-import TiWordChipList from '../components/organisms/TiWordChipList.vue';
-import TiSheet from '../components/atoms/TiSheet.vue'
-import TiWordDisplay from '../components/atoms/TiWordDisplay.vue'
-import TiWordInputForm from '../components/atoms/TiWordInputForm.vue'
-import TiWordListSelector from '../components/organisms/TiWordListSelector.vue';
-import TiRankingList from '../components/organisms/TiRankingList.vue';
-import { useWordLists } from '../pages/composables/useWordLists.js';
+import TiWordChipList from '@/components/organisms/TiWordChipList.vue';
+import TiSheet from '@/components/atoms/TiSheet.vue'
+import TiWordDisplay from '@/components/organisms/TiWordDisplay.vue'
+import TiWordInputForm from '@/components/organisms/TiWordInputForm.vue'
+import TiWordListSelector from '@/components/organisms/TiWordListSelector.vue';
+import TiRankingList from '@/components/organisms/TiRankingList.vue';
+import { useWordLists } from '@/pages/composables/useWordLists.js';
 import { useTypingGame } from './composables/useTypingGame';
 
 const { wordLists, wordList, wordListName } = useWordLists()
