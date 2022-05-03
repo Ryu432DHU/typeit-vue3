@@ -14,7 +14,7 @@ const props = defineProps({
 
 const chipColor = index => {
   if(index < props.currentWordIndex){
-    return "bg-green-500"
+    return "green"
   }
 }
 </script>

@@ -9,6 +9,15 @@ const props = defineProps({
   color: String
 })
 
-const chipStyle = chipColor => chipColor ? [props.color, "text-white"] : []
+const colorTheme = {
+  "green": "bg-green-500",
+  "red"  : "bg-red-500"
+}
+
+const chipStyle = chipColor => {
+  if(colorTheme[chipColor]){
+    return [colorTheme[chipColor], "text-white"]
+  }
+}
 
 </script>
