@@ -24,11 +24,11 @@
 </template>
 
 <script setup>
+import { inject } from 'vue';
 import TiSheet from '../components/atoms/TiSheet.vue'
 import TiSimpleTable from '../components/atoms/TiSimpleTable.vue';
-import fetchWordLists from '../store/wordLists.js'
 
-const wordLists = fetchWordLists()
+const wordLists = inject("providedWordLists")
 
 
 </script>

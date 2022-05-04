@@ -6,7 +6,7 @@
 <script setup>
 import { ref, reactive, onMounted, provide, watch } from 'vue';
 import TiNavBar from './components/atoms/TiNavBar.vue';
-import fetchWordLists from './store/wordLists.js'
+import fetchWordLists from './store/wordLists.ts'
 
 let wordLists = reactive(fetchWordLists())
 const addTimeRecord = (wordListName, newRecord) => {
