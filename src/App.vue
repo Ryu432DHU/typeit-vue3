@@ -3,10 +3,10 @@
   <router-view />
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, reactive, onMounted, provide, watch } from 'vue';
 import TiNavBar from './components/atoms/TiNavBar.vue';
-import fetchWordLists from './store/wordLists.ts'
+import fetchWordLists from './store/wordLists'
 
 let wordLists = reactive(fetchWordLists())
 const addTimeRecord = (wordListName, newRecord) => {

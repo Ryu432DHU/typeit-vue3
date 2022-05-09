@@ -1,13 +1,4 @@
-type wordListRecord = {
-  date: String | Date,
-  time: Number
-}
-
-type wordList = {
-  name: String,
-  words: String[],
-  records: wordListRecord[]
-}
+import { wordList } from '../types'
 
 const wordLists: wordList[] = [
   {

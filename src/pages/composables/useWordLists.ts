@@ -1,8 +1,9 @@
+import { wordList } from '../../types'
 import { ref, computed, inject } from 'vue'
 
 export function useWordLists(){
   const wordListName = ref("example")
-  const wordLists = inject("providedWordLists")
+  const wordLists: wordList[]  = inject("providedWordLists")
   const wordList = computed(() => {
     const result = wordLists.filter(wordList => wordList.name === wordListName.value)
     if(result.length >= 1 && result !== undefined){
