@@ -1,4 +1,15 @@
-const wordLists = [
+type wordListRecord = {
+  date: String | Date,
+  time: Number
+}
+
+type wordList = {
+  name: String,
+  words: String[],
+  records: wordListRecord[]
+}
+
+const wordLists: wordList[] = [
   {
     "name": "example",
     "words": ["qw", "er", "ty"],
