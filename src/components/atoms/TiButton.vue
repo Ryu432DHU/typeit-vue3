@@ -6,8 +6,10 @@
   </button>
 </template>
 
-<script setup>
-const props = defineProps({
-  disabled: Boolean
-})
+<script setup lang="ts">
+type TiButton = {
+  disabled?: "true" | "false"
+}
+
+const props = defineProps<TiButton>()
 </script>
