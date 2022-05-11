@@ -5,21 +5,21 @@
 </template>
 
 <script setup lang="ts">
-type TiChipColor = "green" | "red"
-type TiChip = {
-  color: "green" | "red"
-}
-const props = defineProps<TiChip>()
+import { TiColor } from '@/types'
+const props = defineProps<{
+  color?: TiColor
+}>()
 
 const colorTheme = {
   "green": "bg-green-500",
   "red"  : "bg-red-500"
 }
 
-const chipStyle =  (chipColor:TiChipColor) => {
+const chipStyle =  (chipColor:TiColor) => {
   if(colorTheme[chipColor]){
     return [colorTheme[chipColor], "text-white"]
   }
+  return 
 }
 
 </script>

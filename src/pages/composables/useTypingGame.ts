@@ -1,3 +1,4 @@
+import { GameState } from '@/types.js';
 import { ref, reactive, computed, watch, inject } from 'vue'
 import TiTimeRecorder from '../../utils/TiTimeRecorder.js';
 
@@ -7,7 +8,7 @@ export function useTypingGame(wordList){
   const currentWord = computed(() => wordList.value.words[currentWordIndex.value])
   const wordInputFieldValue = ref("")
 
-  const gameState = ref("STAND_BY")
+  const gameState = ref<GameState>("STAND_BY")
   const isNextWordExisting = computed(() => currentWordIndex.value < wordList.value.words.length)
 
   const timeRecorder = reactive(new TiTimeRecorder())

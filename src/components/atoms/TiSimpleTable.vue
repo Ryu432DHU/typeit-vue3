@@ -34,7 +34,3 @@ table {
   }
 }
 </style>
-
-<script setup>
-
-</script>

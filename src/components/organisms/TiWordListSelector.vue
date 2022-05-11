@@ -22,14 +22,15 @@
   </ti-simple-table>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import { WordList } from '@/types';
 import TiSimpleTable from '../atoms/TiSimpleTable.vue'
 import TiButton from '../atoms/TiButton.vue'
 
-defineProps({
-  wordLists: Array,
-  selectedWordList: Object
-})
+defineProps<{
+  wordLists: WordList[],
+  selectedWordList: WordList
+}>()
 defineEmits(['selectWordList'])
 
 </script>

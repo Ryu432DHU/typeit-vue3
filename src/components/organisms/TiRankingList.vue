@@ -15,11 +15,12 @@
   </ti-simple-table>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import { WordList } from '@/types';
 import { computed } from 'vue'
 import TiSimpleTable from '../atoms/TiSimpleTable.vue'
 
-const props = defineProps({ wordList: Object })
+const props = defineProps<{ wordList: WordList}>()
 const sortedRecords = computed(() =>  props.wordList.records.sort((a, b) => a.time < b.time ? -1 : 1))
 const filteredTop5records = computed(() => sortedRecords.value.slice(0, 5))
 

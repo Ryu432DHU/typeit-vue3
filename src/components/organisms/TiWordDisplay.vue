@@ -12,17 +12,18 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import { GameState } from '@/types'
 import { computed } from 'vue';
 
-const props = defineProps({
+const props = defineProps<{
   word: String,
-  inputAccuracyCollections: Array,
-  gameState: String,
-  clearTime: [Number, String]
-})
+  inputAccuracyCollections: Boolean[],
+  gameState: GameState,
+  clearTime: Number | String
+}>()
 
-const computeHighlightColor = value => {
+const computeHighlightColor = (value:Boolean) => {
   if(value === true){
     return "text-green-500"
   } else if(value === false){

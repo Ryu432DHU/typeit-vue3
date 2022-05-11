@@ -4,7 +4,8 @@
 </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import { TiColor } from '@/types'
 import TiChip from '../atoms/TiChip.vue';
 
 const props = defineProps({
@@ -12,7 +13,7 @@ const props = defineProps({
   currentWordIndex: Number,
 })
 
-const chipColor = index => {
+const chipColor = (index: number): TiColor => {
   if(index < props.currentWordIndex){
     return "green"
   }

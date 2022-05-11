@@ -1,12 +1,14 @@
-export type wordListRecord = {
+export type WordListRecord = {
   date: String | Date,
   time: Number
 }
 
-export type wordList = {
+export type WordList = {
   name: String,
   words: String[],
-  records: wordListRecord[]
+  records: WordListRecord[]
 }
 
-export type gameState = "STAND_BY" | "PLAYING" | "FINISHED"
+export type GameState = "STAND_BY" | "PLAYING" | "FINISHED"
+
+export type TiColor = "green" | "red"

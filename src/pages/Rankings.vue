@@ -23,12 +23,13 @@
   </ti-sheet>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import { WordList } from '@/types';
 import { inject } from 'vue';
 import TiSheet from '../components/atoms/TiSheet.vue'
 import TiSimpleTable from '../components/atoms/TiSimpleTable.vue';
 
-const wordLists = inject("providedWordLists")
+const wordLists: WordList[] = inject("providedWordLists")
 
 
 </script>

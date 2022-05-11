@@ -1,6 +1,6 @@
-import { wordList } from '../types'
+import { WordList } from '../types'
 
-const wordLists: wordList[] = [
+const wordLists: WordList[] = [
   {
     "name": "example",
     "words": ["qw", "er", "ty"],

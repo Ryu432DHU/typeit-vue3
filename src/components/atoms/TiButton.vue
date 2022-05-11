@@ -7,9 +7,7 @@
 </template>
 
 <script setup lang="ts">
-type TiButton = {
-  disabled?: "true" | "false"
-}
-
-const props = defineProps<TiButton>()
+const props = defineProps<{
+  disabled?: true | false | "true" | "false"
+}>()
 </script>
