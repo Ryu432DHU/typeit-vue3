@@ -1,6 +1,6 @@
 export default class TiTimeRecorder {
-  timeRecordingStarted = null
-  timeRecordingStopped = null
+  timeRecordingStarted: null | Date = null
+  timeRecordingStopped: null | Date = null
   isTimeRecording: Boolean = false    
 
   constructor(){

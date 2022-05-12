@@ -37,7 +37,7 @@ import { useWordLists } from '@/pages/composables/useWordLists';
 import { useTypingGame } from './composables/useTypingGame';
 
 const { wordLists, wordList, wordListName } = useWordLists()
-const selectWordListName = newWordListName => {
+const selectWordListName = (newWordListName: String )=> {
   wordListName.value = newWordListName
   currentWordIndex.value = 0
   wordInputFieldValue.value = ""
