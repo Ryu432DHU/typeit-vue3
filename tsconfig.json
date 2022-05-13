@@ -3,6 +3,7 @@
     "strict": true,
     "noImplicitAny": true,
     "target": "ES2015",
+    "types": ["node"],
     "module": "esnext",
     "moduleResolution": "node",
     "jsx": "preserve",
