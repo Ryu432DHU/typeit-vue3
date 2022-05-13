@@ -8,18 +8,10 @@ import NotFoundVue from './pages/NotFound.vue'
 import "./index.scss"
 
 const routes = [
-  {
-    path: "/", component: HomeVue
-  },
-  {
-    path: "/sub", component: SubVue
-  },
-  {
-    path: "/rankings", component: Rankings
-  },
-  {
-    path: "/:pathMatch(.*)*", component: NotFoundVue
-  }
+  { path: "/", component: HomeVue },
+  { path: "/sub", component: SubVue },
+  { path: "/rankings", component: Rankings },
+  { path: "/:pathMatch(.*)*", component: NotFoundVue }
 ]
 
 const router = createRouter({
