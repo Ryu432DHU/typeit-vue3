@@ -13,7 +13,7 @@ export function useTypingGame(wordList: Ref<WordList>){
 
   const timeRecorder = reactive(new TiTimeRecorder())
   const getRoundedClerTime = computed(() => timeRecorder.getRoundedTime())
-  const addTimeRecord: Function = inject("addTimeRecord")
+  const addTimeRecord: Function = inject("addTimeRecord")!
 
   watch(wordInputFieldValue, () => {
     if(isNextWordExisting.value){

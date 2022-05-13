@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "strict": false,
+    "strict": true,
     "noImplicitAny": true,
     "target": "ES2015",
     "module": "esnext",

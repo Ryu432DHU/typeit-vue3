@@ -13,7 +13,8 @@ const props = defineProps({
   currentWordIndex: Number,
 })
 
-const chipColor = (index: number): TiColor => {
+const chipColor = (index: number): TiColor | undefined => {
+  if(!props.currentWordIndex)return
   if(index < props.currentWordIndex){
     return "green"
   }

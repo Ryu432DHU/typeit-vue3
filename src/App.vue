@@ -4,13 +4,13 @@
 </template>
 
 <script setup lang="ts">
-import { WordList } from './types';
+import { WordList, WordListRecord } from './types';
 import { ref, reactive, onMounted, provide, watch } from 'vue';
 import TiNavBar from './components/atoms/TiNavBar.vue';
 import fetchWordLists from './store/wordLists'
 
 let wordLists: WordList[] = reactive(fetchWordLists())
-const addTimeRecord = (wordListName, newRecord) => {
+const addTimeRecord = (wordListName: string, newRecord: WordListRecord) => {
   const index = wordLists.findIndex(wordList =>wordList.name === wordListName)
   if(index >= 0){
     wordLists[index].records.push(newRecord)

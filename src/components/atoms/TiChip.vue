@@ -15,7 +15,8 @@ const colorTheme = {
   "red"  : "bg-red-500"
 }
 
-const chipStyle =  (chipColor:TiColor) => {
+const chipStyle =  (chipColor:TiColor | undefined) => {
+  if(!chipColor)return
   if(colorTheme[chipColor]){
     return [colorTheme[chipColor], "text-white"]
   }
