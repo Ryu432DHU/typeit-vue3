@@ -10,7 +10,7 @@
       <td>{{ index + 1 }}</td>
       <td>{{ wordList.words.length }} words</td>
       <td>{{ record.time }} seconds</td>
-      <td>{{ new Date(record.date).toLocaleString() }}</td>
+      <td>{{ getRecordDateText(record.date) }}</td>
     </tr>
   </ti-simple-table>
 </template>
@@ -23,5 +23,5 @@ import TiSimpleTable from '../atoms/TiSimpleTable.vue'
 const props = defineProps<{ wordList: WordList}>()
 const sortedRecords = computed(() =>  props.wordList.records.sort((a, b) => a.time < b.time ? -1 : 1))
 const filteredTop5records = computed(() => sortedRecords.value.slice(0, 5))
-
+const getRecordDateText = (date: Date | string): string => new Date(date).toLocaleString()
 </script>

@@ -10,7 +10,7 @@
 <script setup lang="ts">
 defineProps<{ modelValue: String }>()
 const emit = defineEmits(["update:modelValue"])
-const updateModelValue = $event => {
-  emit('update:modelValue', $event.target.value)
+const updateModelValue = ($event: Event) => {
+  emit('update:modelValue', ($event.target as HTMLInputElement).value)
 }
 </script>

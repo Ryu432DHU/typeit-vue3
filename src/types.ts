@@ -1,11 +1,11 @@
 export type WordListRecord = {
-  date: String | Date,
-  time: Number
+  date: string | Date,
+  time: number
 }
 
 export type WordList = {
-  name: String,
-  words: String[],
+  name: string,
+  words: string[],
   records: WordListRecord[]
 }
 
