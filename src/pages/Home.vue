@@ -62,6 +62,8 @@ const inputAccuracyCollections = computed(() => {
     } else {
       return currentWord.value.split("").map((letter, index) => letter === wordInputFieldValue.value[index])
     }
+  } else {
+    return []
   }
 })
 </script>
