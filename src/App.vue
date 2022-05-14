@@ -17,7 +17,7 @@ const addTimeRecord = (wordListName: string, newRecord: WordListRecord) => {
   }
 }
 
-provide("providedWordLists", wordLists)
+provide("wordLists", wordLists)
 provide("addTimeRecord", addTimeRecord)
 
 

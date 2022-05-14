@@ -3,7 +3,7 @@ import { ref, computed, inject } from 'vue'
 
 export function useWordLists(){
   const wordListName = ref<String>("example")
-  const wordLists: WordList[]  = inject("providedWordLists")!
+  const wordLists: WordList[]  = inject("wordLists")!
   const wordList = computed(() => {
     const result = wordLists.filter(wordList => wordList.name === wordListName.value)
     if(result.length >= 1 && result !== undefined){

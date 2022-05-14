@@ -29,7 +29,7 @@ import { inject } from 'vue';
 import TiSheet from '../components/atoms/TiSheet.vue'
 import TiSimpleTable from '../components/atoms/TiSimpleTable.vue';
 
-const wordLists: WordList[] = inject("providedWordLists")!
+const wordLists: WordList[] = inject("wordLists")!
 
 
 </script>

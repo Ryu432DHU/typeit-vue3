@@ -25,6 +25,7 @@ const router = useRouter()
 const routes = [
   { path: "/", text: "Home" },
   { path: "/rankings", text: "Rankings" },
+  { path: "/create", text: "Create" },
   { path: "/edit", text: "Edit" },
 ]
 
