@@ -10,14 +10,14 @@ table {
 
   tr {
     border-bottom: solid 1px #e2e8f0;
+    height: 3rem;
+    line-height: 3rem;
 
     & ~ tr:hover {
       background-color: #f4f4f4;
     }
 
     th, td {
-      height: 3rem;
-      line-height: 3rem;
       text-align: left;
       padding-left: 1rem;
     }
