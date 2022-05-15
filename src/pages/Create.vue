@@ -17,7 +17,7 @@
           </td>
           <td>
             <ti-button>Up</ti-button>
-            <ti-button>Down</ti-button>
+            <ti-button class="mx-4">Down</ti-button>
             <ti-button>Delete</ti-button>
           </td>
         </tr>
