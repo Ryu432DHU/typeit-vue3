@@ -3,7 +3,7 @@
     <div class="w-11/12 mx-auto py-4">
       <h1 class="text-2xl mb-4">Create a new word list</h1>
       <ti-text-field v-model="wordListName" placeholder="Type the word list name" />
-      <p v-if="isWordListNameAvailabel">The word list  "{{ wordListName }}" already existis.</p>
+      <p v-if="!isWordListNameAvailable">The word list  "{{ wordListName }}" already existis.</p>
       <ti-simple-table class="mb-4">
         <tr>
           <th>No.</th>
@@ -22,7 +22,7 @@
           </td>
         </tr>
       </ti-simple-table>
-      <ti-button>Create</ti-button>
+      <ti-button :disabled="!isWordListNameAvailable">Create</ti-button>
     </div>
     <p>{{ words }}</p>
   </ti-sheet>
@@ -39,6 +39,6 @@ import TiTextField from '@/components/atoms/TiTextField.vue';
 const wordLists:WordList[] = inject('wordLists')!
 const wordListName = ref("")
 const words = ref(["hoge", "foo", "bar"])
-const isWordListNameAvailabel = computed(() => wordLists.map(wordList => wordList.name).includes(wordListName.value))
+const isWordListNameAvailable = computed(() => !wordLists.map(wordList => wordList.name).includes(wordListName.value))
 
 </script>
