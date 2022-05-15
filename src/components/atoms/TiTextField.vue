@@ -30,7 +30,7 @@ div {
     height: 1px;
     width: 100%;
     position: absolute;
-    bottom: 0px;
+    bottom: -1px;
     transition: height 0.3s, background 0.3s;
     transition-timing-function: ease-out;
   }
@@ -39,7 +39,7 @@ div {
     background: transparent;
     box-sizing: border-box;
     line-height: 1.5rem;
-    padding: 1rem 1rem;
+    padding: 0.5rem 1rem;
     position: relative;
     width: 100%;
     outline: none;
@@ -48,10 +48,10 @@ div {
       background: #0ea5e9;
       content: '';
       display: block;
-      height: 3px;
+      height: 2px;
       width: 100%;
       position: absolute;
-      bottom: 0px;
+      bottom: -1px;
     }
   }
   &:hover {
@@ -64,9 +64,13 @@ div {
   .border-bottom {
     display: block;
     background: #3b82f6;
-    height: 3px;
+    height: 2px;
+    position: absolute;
+    width: 100%;
     transform: scaleX(0);
     transition: transform 0.3s;
+    bottom: -1px;
+    z-index: 1;
   }
 
   input:focus + .border-bottom {
