@@ -22,6 +22,8 @@ const updateModelValue = (event:Event) => {
 <style scoped lang="scss">
 div {
   position: relative;
+  line-height: initial;
+  height: initial;
 
   &::before {
     background: #aaa;
@@ -30,7 +32,7 @@ div {
     height: 1px;
     width: 100%;
     position: absolute;
-    bottom: -1px;
+    bottom: 0px;
     transition: height 0.3s, background 0.3s;
     transition-timing-function: ease-out;
   }
@@ -51,7 +53,7 @@ div {
       height: 2px;
       width: 100%;
       position: absolute;
-      bottom: -1px;
+      bottom: 0px;
     }
   }
   &:hover {
@@ -69,7 +71,7 @@ div {
     width: 100%;
     transform: scaleX(0);
     transition: transform 0.3s;
-    bottom: -1px;
+    bottom: 0px;
     z-index: 1;
   }
 
