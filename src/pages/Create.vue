@@ -1,7 +1,7 @@
 <template>
   <ti-sheet>
     <div class="w-11/12 mx-auto py-4">
-      <h1 class="text-2xl mb-4">Create a new word list</h1>
+      <h1 class="text-2xl mb-4">Creating a new word list</h1>
       <ti-text-field v-model="wordListName" placeholder="Type the word list name" />
       <p v-if="!isWordListNameAvailable">The word list  "{{ wordListName }}" already existis.</p>
       <ti-simple-table class="mb-4">
@@ -16,13 +16,13 @@
             <ti-text-field v-model="words[index]" />
           </td>
           <td>
-            <ti-button>Up</ti-button>
-            <ti-button class="mx-4">Down</ti-button>
-            <ti-button>Delete</ti-button>
+            <ti-button @click="moveToUp(index)">Up</ti-button>
+            <ti-button @click="moveToDown(index)" class="mx-4">Down</ti-button>
+            <ti-button @click="deleteWord(index)">Delete</ti-button>
           </td>
         </tr>
       </ti-simple-table>
-      <ti-button :disabled="!isWordListNameAvailable">Create</ti-button>
+      <ti-button :disabled="!isWordListAvailable">Create</ti-button>
     </div>
     <p>{{ words }}</p>
   </ti-sheet>
@@ -36,9 +36,24 @@ import TiButton from '@/components/atoms/TiButton.vue';
 import { WordList } from '@/types.js'
 import TiTextField from '@/components/atoms/TiTextField.vue';
 
-const wordLists:WordList[] = inject('wordLists')!
+const wordLists: WordList[] = inject('wordLists')!
 const wordListName = ref("")
 const words = ref(["hoge", "foo", "bar"])
 const isWordListNameAvailable = computed(() => !wordLists.map(wordList => wordList.name).includes(wordListName.value))
+const isWordListEmpty = computed(() => words.value.length === 0)
+const isWordListAvailable = computed(() => isWordListNameAvailable.value && isWordListEmpty.value)
 
+const moveToUp = (index: number) => {
+  if(words.value[index - 1]){
+    [words.value[index - 1], words.value[index]] = [words.value[index], words.value[index - 1]]
+  }
+}
+const moveToDown = (index: number) => {  
+  if(words.value[index + 1]){
+    [words.value[index + 1], words.value[index]] = [words.value[index], words.value[index + 1]]
+  }
+}
+const deleteWord = (index: number) => {
+  words.value.splice(index, 1)
+}
 </script>
