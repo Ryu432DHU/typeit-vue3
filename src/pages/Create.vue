@@ -21,6 +21,15 @@
             <ti-button @click="deleteWord(index)">Delete</ti-button>
           </td>
         </tr>
+        <tr>
+          <td>{{ words.length + 1}}</td>
+          <td>
+            <ti-text-field v-model="wordToAdd" placeholder="Type a new word"/>
+          </td>
+          <td>
+            <ti-button @click="addNewWord">Add</ti-button>
+          </td>
+        </tr>
       </ti-simple-table>
       <ti-button :disabled="!isWordListAvailable">Create</ti-button>
     </div>
@@ -29,7 +38,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, inject } from 'vue';
+import { ref, computed, inject, nextTick } from 'vue';
 import TiSheet from '@/components/atoms/TiSheet.vue'
 import TiSimpleTable from '@/components/atoms/TiSimpleTable.vue';
 import TiButton from '@/components/atoms/TiButton.vue';
@@ -39,9 +48,18 @@ import TiTextField from '@/components/atoms/TiTextField.vue';
 const wordLists: WordList[] = inject('wordLists')!
 const wordListName = ref("")
 const words = ref(["hoge", "foo", "bar"])
+const wordToAdd = ref("")
 const isWordListNameAvailable = computed(() => !wordLists.map(wordList => wordList.name).includes(wordListName.value))
-const isWordListEmpty = computed(() => words.value.length === 0)
-const isWordListAvailable = computed(() => isWordListNameAvailable.value && isWordListEmpty.value)
+const isWordListNameEmpty = computed(() => wordListName.value.length === 0)
+const isWordListWordsEmpty = computed(() => words.value.length === 0)
+const isWordListAvailable = computed(() => isWordListNameAvailable.value && !isWordListNameEmpty.value && !isWordListWordsEmpty.value)
+
+const addNewWord = () => {
+  words.value = [...words.value, wordToAdd.value]
+  nextTick(() => {
+    wordToAdd.value = ""
+  })
+}
 
 const moveToUp = (index: number) => {
   if(words.value[index - 1]){
