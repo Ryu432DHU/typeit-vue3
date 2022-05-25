@@ -16,9 +16,13 @@ const addTimeRecord = (wordListName: string, newRecord: WordListRecord) => {
     wordLists[index].records.push(newRecord)
   }
 }
+const addWordList = (newWordList: WordList) => {
+  wordLists.push(newWordList)
+}
 
 provide("wordLists", wordLists)
 provide("addTimeRecord", addTimeRecord)
+provide("addWordList", addWordList)
 
 
 onMounted(() => {
