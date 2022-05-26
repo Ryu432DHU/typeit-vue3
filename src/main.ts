@@ -6,6 +6,7 @@ import SubVue from './pages/Sub.vue'
 import Rankings from './pages/Rankings.vue'
 import NotFoundVue from './pages/NotFound.vue'
 import CreateVue from './pages/Create.vue'
+import EditVue from './pages/Edit.vue'
 import "./index.scss"
 
 const routes = [
@@ -13,6 +14,7 @@ const routes = [
   { path: "/sub", component: SubVue },
   { path: "/rankings", component: Rankings },
   { path: "/create", component: CreateVue },
+  { path: "/edit", component: EditVue },
   { path: "/:pathMatch(.*)*", component: NotFoundVue }
 ]
 
