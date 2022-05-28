@@ -32,7 +32,10 @@
           </tr>
         </ti-simple-table>
         <div class="my-4">
-          <ti-button>Save</ti-button>
+          <ti-button class="mr-4">Save</ti-button>
+          <router-link to="/edit">
+            <ti-button>Cancel</ti-button>
+          </router-link>
         </div>
       </template>
       <template v-else>
@@ -63,17 +66,15 @@ const wordListName = computed(() => router.currentRoute.value.params.id )
 const wordLists: WordList[] = inject('wordLists')!
 const wordList = computed(() => {
   const targetWordList = wordLists.filter(wordList => wordList.name === wordListName.value)
-  if(targetWordList.length === 0) throw new Error("The word list is not found")
+  if(targetWordList.length === 0) console.log("The word list is not found") 
   return targetWordList[0]
 })
-const words = ref(wordList.value.words)
-const wordToAdd = ref("")
 const isWordListExisting = computed(() => {
   const wordList = wordLists.filter(wordList => wordList.name === requestedWordListName.value)
   return wordList.length !== 0
 })
-console.log(router)
-console.log(router.currentRoute.value.params)
+const words = ref(wordList.value.words)
+const wordToAdd = ref("")
 
 const addNewWord = () => {
   words.value.push(wordToAdd.value)

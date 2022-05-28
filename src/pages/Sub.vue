@@ -3,6 +3,7 @@
     <div class="mb-8">
       <h1>This is Sub.vue</h1>
       <router-link to="/" class="underline">Go to the top page</router-link>
+      <ti-button>Hoge</ti-button>
     </div>
   </ti-sheet>
 </template>

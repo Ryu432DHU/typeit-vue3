@@ -1,30 +1,17 @@
 import { createApp } from 'vue'
-import { createRouter, createWebHistory } from 'vue-router'
 import App from './App.vue'
-import HomeVue from './pages/Home.vue'
-import SubVue from './pages/Sub.vue'
-import Rankings from './pages/Rankings.vue'
-import NotFoundVue from './pages/NotFound.vue'
-import CreateVue from './pages/Create.vue'
-import EditVue from './pages/Edit.vue'
-import EditWordListVue from './pages/EditWordList.vue'
+import { router } from './router/routes'
 import "./index.scss"
 
-const routes = [
-  { path: "/", component: HomeVue },
-  { path: "/sub", component: SubVue },
-  { path: "/rankings", component: Rankings },
-  { path: "/create", component: CreateVue },
-  { path: "/edit", component: EditVue },
-  { path: "/edit/:id", component: EditWordListVue },
-  { path: "/:pathMatch(.*)*", component: NotFoundVue }
-]
-
-const router = createRouter({
-  history: createWebHistory(),
-  routes
-})
+import TiButton from '@/components/atoms/TiButton.vue'
+import TiSheet from '@/components/atoms/TiSheet.vue'
+import TiTextField from '@/components/atoms/TiTextField.vue'
+import TiSimpleTable from '@/components/atoms/TiSimpleTable.vue'
 
 const app = createApp(App)
 app.use(router)
+app.component('ti-button', TiButton)
+app.component('ti-sheet', TiSheet)
+app.component('ti-text-field', TiTextField)
+app.component('ti-simple-table', TiSimpleTable)
 app.mount("#app")
