@@ -1,5 +1,5 @@
 <template>
-  <ti-sheet>
+  <ti-sheet class="mb-8">
     <div class="w-11/12 mx-auto py-4">
       <h1 class="text-2xl mb-6">Edit word lists</h1>
       <ti-simple-table>
@@ -21,7 +21,18 @@
         </tr>
       </ti-simple-table>
     </div>
-  </ti-sheet>  
+  </ti-sheet>
+  <ti-sheet>
+    <div class="w-11/12 mx-auto py-4">
+      <h1 class="text-2xl mb-6">Reset Data</h1>
+      <h2 class="text-xl my-2">Reset LocalStorage</h2>
+      <p class="text-sm">This operetion permanently deletes LocalStorage Data(wordLists) and cannot undo.</p>
+      <p class="text-sm">Confirmation Dialog is not shown!!!</p>
+      <p class="text-base my-4">
+        <ti-button @click="deleteWordLists">Reset</ti-button>
+      </p>
+    </div>
+  </ti-sheet>
 </template>
 
 <script setup lang="ts">
@@ -32,4 +43,5 @@ import TiSimpleTable from '@/components/atoms/TiSimpleTable.vue';
 import TiButton from '@/components/atoms/TiButton.vue';
 
 const wordLists: WordList[] = inject("wordLists")!
+const deleteWordLists: Function = inject("deleteWordLists")!
 </script>

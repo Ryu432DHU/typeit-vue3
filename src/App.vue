@@ -19,10 +19,14 @@ const addTimeRecord = (wordListName: string, newRecord: WordListRecord) => {
 const addWordList = (newWordList: WordList) => {
   wordLists.push(newWordList)
 }
+const deleteWordLists = () => {
+  localStorage.clear()
+}
 
 provide("wordLists", wordLists)
 provide("addTimeRecord", addTimeRecord)
 provide("addWordList", addWordList)
+provide("deleteWordLists", deleteWordLists)
 
 
 onMounted(() => {
