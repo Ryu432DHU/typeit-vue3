@@ -43,5 +43,5 @@ import TiSimpleTable from '@/components/atoms/TiSimpleTable.vue';
 import TiButton from '@/components/atoms/TiButton.vue';
 
 const wordLists: WordList[] = inject("wordLists")!
-const deleteWordLists: Function = inject("deleteWordLists")!
+const deleteWordLists: ((payload: MouseEvent) => void) = inject("deleteWordLists")!
 </script>
