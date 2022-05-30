@@ -56,36 +56,22 @@
 
 <script setup lang="ts">
 import { ref, computed, inject, nextTick } from 'vue';
-import TiSheet from '@/components/atoms/TiSheet.vue'
-import TiSimpleTable from '@/components/atoms/TiSimpleTable.vue';
-import TiButton from '@/components/atoms/TiButton.vue';
 import { WordList } from '@/types.js'
-import TiTextField from '@/components/atoms/TiTextField.vue';
+import { useCreateWordList } from './composables/useCreateWordList';
 
-const wordLists: WordList[] = inject('wordLists')!
-const wordListName = ref("Example")
-const words = ref(["hoge", "foo", "bar"])
-const wordToAdd = ref("")
-const isWordListNameAvailable = computed(() => !wordLists.map(wordList => wordList.name).includes(wordListName.value))
-const isWordListNameEmpty = computed(() => wordListName.value.length === 0)
-const isWordListWordsEmpty = computed(() => words.value.length === 0)
-const isWordListAvailable = computed(() => isWordListNameAvailable.value && !isWordListNameEmpty.value && !isWordListWordsEmpty.value)
+const {
+  wordListName,
+  words,
+  wordToAdd,
+  isWordListNameAvailable,
+  isWordListAvailable,
+  addNewWord,
+  moveToUp,
+  moveToDown,
+  deleteWord
+} = useCreateWordList()
 
-const addNewWord = () => {
-  words.value.push(wordToAdd.value)
-  nextTick(() => wordToAdd.value = "")
-}
-const moveToUp = (index: number) => {
-  if(words.value[index - 1]){
-    [words.value[index - 1], words.value[index]] = [words.value[index], words.value[index - 1]]
-  }
-}
-const moveToDown = (index: number) => {
-  if(words.value[index + 1]){
-    [words.value[index + 1], words.value[index]] = [words.value[index], words.value[index + 1]]
-  }
-}
-const deleteWord = (index: number) => words.value.splice(index, 1)
+
 
 const isWordListCreated = ref(false)
 const addWordList: Function = inject("addWordList")!
