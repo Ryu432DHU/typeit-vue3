@@ -26,7 +26,7 @@
     <div class="w-11/12 mx-auto py-4">
       <h1 class="text-2xl mb-6">Reset Data</h1>
       <h2 class="text-xl my-2">Reset LocalStorage</h2>
-      <p class="text-sm">This operetion permanently deletes LocalStorage Data(wordLists) and cannot undo.</p>
+      <p class="text-sm">This operetion permanently deletes LocalStorage Data(wordLists) and cannot be undone.</p>
       <p class="text-sm">Confirmation Dialog is not shown!!!</p>
       <p class="text-base my-4">
         <ti-button @click="deleteWordLists">Reset</ti-button>
