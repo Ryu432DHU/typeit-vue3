@@ -28,7 +28,6 @@
 <script setup lang="ts">
 import { ref, reactive, computed, watch, nextTick, inject } from 'vue'
 import TiWordChipList from '@/components/organisms/TiWordChipList.vue';
-import TiSheet from '@/components/atoms/TiSheet.vue'
 import TiWordDisplay from '@/components/organisms/TiWordDisplay.vue'
 import TiWordInputForm from '@/components/organisms/TiWordInputForm.vue'
 import TiWordListSelector from '@/components/organisms/TiWordListSelector.vue';
@@ -36,8 +35,10 @@ import TiRankingList from '@/components/organisms/TiRankingList.vue';
 import { useWordLists } from '@/pages/composables/useWordLists';
 import { useTypingGame } from './composables/useTypingGame';
 
-const { wordLists, wordList, wordListName } = useWordLists()
-const selectWordListName = (newWordListName: String )=> {
+const { wordLists, getWordList } = useWordLists()
+const wordListName = ref("example")
+const wordList = computed(() => getWordList(wordListName.value))
+const selectWordListName = (newWordListName: string )=> {
   wordListName.value = newWordListName
   currentWordIndex.value = 0
   wordInputFieldValue.value = ""

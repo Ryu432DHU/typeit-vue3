@@ -58,21 +58,22 @@ import TiSimpleTable from '@/components/atoms/TiSimpleTable.vue';
 import TiTextField from '@/components/atoms/TiTextField.vue';
 import TiButton from '@/components/atoms/TiButton.vue';
 import { WordList } from '@/types';
+import { useWordLists } from './composables/useWordLists';
 
 const router = useRouter()
 const requestedWordListName = ref(String(router.currentRoute.value.params.id))
-const wordListName = computed(() => router.currentRoute.value.params.id )
+const { getWordList } = useWordLists()
+const wordListName = computed(() => {
+  return String(router.currentRoute.value.params.id)
+})
 
 const wordLists: WordList[] = inject('wordLists')!
-const wordList = computed(() => {
-  const targetWordList = wordLists.filter(wordList => wordList.name === wordListName.value)
-  if(targetWordList.length === 0) console.log("The word list is not found") 
-  return targetWordList[0]
-})
+const wordList = computed(() => getWordList(wordListName.value))
 const isWordListExisting = computed(() => {
   const wordList = wordLists.filter(wordList => wordList.name === requestedWordListName.value)
   return wordList.length !== 0
 })
+
 const words = ref(wordList.value.words)
 const wordToAdd = ref("")
 

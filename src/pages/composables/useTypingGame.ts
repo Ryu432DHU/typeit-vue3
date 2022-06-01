@@ -1,9 +1,9 @@
 import { GameState, WordList } from '@/types.js';
-import { ref, reactive, computed, watch, inject, Ref } from 'vue'
+import { ref, reactive, computed, watch, inject, Ref, ComputedRef, } from 'vue'
 import TiTimeRecorder from '../../utils/TiTimeRecorder.js';
 
 
-export function useTypingGame(wordList: Ref<WordList>){
+export function useTypingGame(wordList: ComputedRef<WordList>){
   const currentWordIndex = ref(0)
   const currentWord = computed(() => wordList.value.words[currentWordIndex.value])
   const wordInputFieldValue = ref("")
