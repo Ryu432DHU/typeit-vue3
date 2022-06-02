@@ -8,7 +8,7 @@
   </ti-sheet>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, computed } from 'vue';
 import TiSheet from '../components/atoms/TiSheet.vue'
 
@@ -24,5 +24,18 @@ console.log("stringRef", stringRef)
 console.log("bookeanRef", booleanRef)
 console.log("computedNumber", computedNumber)
 console.log("computedString", computedString)
+
+
+const computedObject = computed(() => ({
+  numbers: [1,2,3,4,5] as const,
+  letters: ["a", "b", "c", "d"]
+}))
+
+const itemsRef = ref(["a", "b", "c", "d"] as const)
+const itemsRef2 = ref([1,2,3,4,5] as const)
+const ref1 = ref([...itemsRef.value])
+const ref2 = ref([...itemsRef2.value])
+const ref3 = ref([...computedObject.value.numbers])
+const ref4 = ref([...computedObject.value.letters])
 </script>
 
