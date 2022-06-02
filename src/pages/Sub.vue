@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, reactive } from 'vue';
 import TiSheet from '../components/atoms/TiSheet.vue'
 
 const simpleRef = ref(0)
@@ -26,10 +26,13 @@ console.log("computedNumber", computedNumber)
 console.log("computedString", computedString)
 
 
-const computedObject = computed(() => ({
-  numbers: [1,2,3,4,5] as const,
+const obj = reactive({
+  numbers: [1,2,3,4,5],
   letters: ["a", "b", "c", "d"]
-}))
+})
+const computedObject = computed(() => obj)
+
+obj.numbers.push(5)
 
 const itemsRef = ref(["a", "b", "c", "d"] as const)
 const itemsRef2 = ref([1,2,3,4,5] as const)

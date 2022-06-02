@@ -74,7 +74,7 @@ const isWordListExisting = computed(() => {
   return wordList.length !== 0
 })
 
-const words = ref(wordList.value.words)
+const words = ref([...wordList.value.words])
 const wordToAdd = ref("")
 
 const addNewWord = () => {
