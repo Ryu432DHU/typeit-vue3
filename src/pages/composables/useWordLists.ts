@@ -2,7 +2,6 @@ import { WordList } from '../../types'
 import { ref, reactive, computed, inject, Ref } from 'vue'
 
 export function useWordLists(){
-  const wordListName = ref<String>("example")
   const wordLists: WordList[]  = inject("wordLists")!
   const getWordList = (wordListName: string): WordList => {
     const result = wordLists.filter(wordList => wordList.name === wordListName)
@@ -13,5 +12,5 @@ export function useWordLists(){
     }
   }
 
-  return { wordLists, wordListName, getWordList }
+  return { wordLists, getWordList }
 }

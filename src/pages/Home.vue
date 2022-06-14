@@ -26,19 +26,19 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, computed, watch, nextTick, inject } from 'vue'
-import TiWordChipList from '@/components/organisms/TiWordChipList.vue';
+import { ref, reactive, computed, nextTick, inject } from 'vue'
+import TiWordChipList from '@/components/organisms/TiWordChipList.vue'
 import TiWordDisplay from '@/components/organisms/TiWordDisplay.vue'
 import TiWordInputForm from '@/components/organisms/TiWordInputForm.vue'
-import TiWordListSelector from '@/components/organisms/TiWordListSelector.vue';
-import TiRankingList from '@/components/organisms/TiRankingList.vue';
-import { useWordLists } from '@/pages/composables/useWordLists';
-import { useTypingGame } from './composables/useTypingGame';
+import TiWordListSelector from '@/components/organisms/TiWordListSelector.vue'
+import TiRankingList from '@/components/organisms/TiRankingList.vue'
+import { useWordLists } from '@/pages/composables/useWordLists'
+import { useTypingGame } from './composables/useTypingGame'
 
 const { wordLists, getWordList } = useWordLists()
-const wordListName = ref("example")
+const wordListName = ref(wordLists[0].name)
 const wordList = computed(() => getWordList(wordListName.value))
-const selectWordListName = (newWordListName: string )=> {
+const selectWordListName = (newWordListName: string ) => {
   wordListName.value = newWordListName
   currentWordIndex.value = 0
   wordInputFieldValue.value = ""
