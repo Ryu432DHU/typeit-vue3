@@ -47,7 +47,7 @@ import TiSheet from '@/components/atoms/TiSheet.vue';
 import TiSimpleTable from '@/components/atoms/TiSimpleTable.vue';
 import TiTextField from '@/components/atoms/TiTextField.vue';
 import TiButton from '@/components/atoms/TiButton.vue';
-import { WordList, WordListRecord } from '@/types';
+import { WordList } from '@/types';
 import { useWordLists } from './composables/useWordLists';
 
 const router = useRouter()
@@ -57,7 +57,6 @@ const wordListName = computed(() => {
   return String(router.currentRoute.value.params.id)
 })
 
-const wordLists: WordList[] = inject('wordLists')!
 const wordList = computed(() => getWordList(wordListName.value))
 
 const words = ref([...wordList.value.words])
