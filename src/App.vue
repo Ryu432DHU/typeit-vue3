@@ -22,11 +22,18 @@ const addWordList = (newWordList: WordList) => {
 const deleteWordLists = () => {
   localStorage.clear()
 }
+const updateWordList = (wordListName: string, newWordList: WordList) => {
+  const targetWordListIndex = wordLists.findIndex(wordList => wordList.name === wordListName)
+  wordLists[targetWordListIndex].name = newWordList.name
+  wordLists[targetWordListIndex].words = newWordList.words
+  wordLists[targetWordListIndex].records = newWordList.records
+}
 
 provide("wordLists", wordLists)
 provide("addTimeRecord", addTimeRecord)
 provide("addWordList", addWordList)
 provide("deleteWordLists", deleteWordLists)
+provide("updateWordList", updateWordList)
 
 
 onMounted(() => {
