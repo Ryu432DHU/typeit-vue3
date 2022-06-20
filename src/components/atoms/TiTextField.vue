@@ -1,11 +1,13 @@
 <template>
   <div>
-    <input type="text" @input="updateModelValue($event)" :value="modelValue" :placeholder="placeholder">
+    <input type="text" @input="updateModelValue($event)" ref="textField" :value="modelValue" :placeholder="placeholder">
     <div class="border-bottom"></div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
+
 const emit = defineEmits(['update:modelValue'])
 const props = defineProps<{
   modelValue: string,
@@ -17,6 +19,10 @@ const props = defineProps<{
 const updateModelValue = (event:Event) => {
   emit('update:modelValue', (event.target as HTMLInputElement).value)
 }
+
+const textField = ref()
+const focusInput = () => textField.value.focus()
+defineExpose({focusInput})
 </script>
 
 <style scoped lang="scss">

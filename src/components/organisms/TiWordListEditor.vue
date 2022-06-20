@@ -29,7 +29,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, nextTick, onMounted } from 'vue';
+import { ref, nextTick } from 'vue';
 const props = defineProps<{
   words: string[]
 }>()
@@ -40,6 +40,7 @@ const wordInputField = ref()
 
 const addNewWord = () => {
   localWords.value.push(wordToAdd.value)
+  wordInputField.value.focusInput()
   nextTick(() => wordToAdd.value = "")
 }
 const moveToUp = (index: number) => {
