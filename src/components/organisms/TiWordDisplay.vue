@@ -6,7 +6,9 @@
     </template>
     <template v-else>
       <div class="bg-neutral-800 text-white text-center text-2xl p-10">
-        <span v-for="(letter, index) in word.split('')" :class="computeHighlightColor(inputAccuracyCollections[index])">{{ letter }}</span>
+        <template v-if="word">
+          <span v-for="(letter, index) in word.split('')" :class="computeHighlightColor(inputAccuracyCollections[index])">{{ letter }}</span>
+        </template>
       </div>
     </template>
   </div>

@@ -5,33 +5,7 @@
       <h1 class="text-2xl mb-4">Creating a new word list</h1>
       <ti-text-field v-model="wordListName" placeholder="Type the word list name" />
       <p v-if="!isWordListNameAvailable">The word list  "{{ wordListName }}" already existis.</p>
-      <ti-simple-table class="mb-4">
-        <tr>
-          <th>No.</th>
-          <th>Word</th>
-          <th>Actions</th>
-        </tr>
-        <tr v-for="(word, index) in words" :key="index">
-          <td>{{ index + 1}}</td>
-          <td>
-            <ti-text-field v-model="words[index]" />
-          </td>
-          <td>
-            <ti-button @click="moveToUp(index)">Up</ti-button>
-            <ti-button @click="moveToDown(index)" class="mx-4">Down</ti-button>
-            <ti-button @click="deleteWord(index)">Delete</ti-button>
-          </td>
-        </tr>
-        <tr>
-          <td>{{ words.length + 1}}</td>
-          <td>
-            <ti-text-field v-model="wordToAdd" placeholder="Type a new word"/>
-          </td>
-          <td>
-            <ti-button @click="addNewWord">Add</ti-button>
-          </td>
-        </tr>
-      </ti-simple-table>
+      <ti-word-list-editor :words="words" />
       <ti-button :disabled="!isWordListAvailable" @click="createWordList">Create</ti-button>
       </template>
       <template v-else>
@@ -55,23 +29,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, inject, nextTick } from 'vue';
+import { ref, computed, inject } from 'vue';
 import { WordList } from '@/types.js'
 import { useCreateWordList } from './composables/useCreateWordList';
+import TiWordListEditor from '@/components/organisms/TiWordListEditor.vue';
 
 const {
   wordListName,
   words,
-  wordToAdd,
   isWordListNameAvailable,
   isWordListAvailable,
-  addNewWord,
-  moveToUp,
-  moveToDown,
-  deleteWord
 } = useCreateWordList()
-
-
 
 const isWordListCreated = ref(false)
 const addWordList: Function = inject("addWordList")!

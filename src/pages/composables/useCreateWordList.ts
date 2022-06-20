@@ -12,21 +12,6 @@ export function useCreateWordList(){
   const isWordListWordsEmpty = computed(() => words.value.length === 0)
   const isWordListAvailable = computed(() => isWordListNameAvailable.value && !isWordListNameEmpty.value && !isWordListWordsEmpty.value)
 
-  const addNewWord = () => {
-    words.value.push(wordToAdd.value)
-    nextTick(() => wordToAdd.value = "")
-  }
-  const moveToUp = (index: number) => {
-    if(words.value[index - 1]){
-      [words.value[index - 1], words.value[index]] = [words.value[index], words.value[index - 1]]
-    }
-  }
-  const moveToDown = (index: number) => {
-    if(words.value[index + 1]){
-      [words.value[index + 1], words.value[index]] = [words.value[index], words.value[index + 1]]
-    }
-  }
-  const deleteWord = (index: number) => words.value.splice(index, 1)
 
   return {
     wordListName,
@@ -34,9 +19,5 @@ export function useCreateWordList(){
     wordToAdd,
     isWordListNameAvailable,
     isWordListAvailable,
-    addNewWord,
-    moveToUp,
-    moveToDown,
-    deleteWord
   }
 }

@@ -1,5 +1,5 @@
 import { GameState, WordList } from '@/types.js';
-import { ref, reactive, computed, watch, inject, Ref, ComputedRef, } from 'vue'
+import { ref, reactive, computed, watch, inject, nextTick, ComputedRef, } from 'vue'
 import TiTimeRecorder from '../../utils/TiTimeRecorder.js';
 
 
@@ -24,7 +24,7 @@ export function useTypingGame(wordList: ComputedRef<WordList>){
 
       if(wordInputFieldValue.value === currentWord.value){
         currentWordIndex.value++
-        wordInputFieldValue.value = ""
+        nextTick(() => wordInputFieldValue.value = "")
       }
     } else {
       if(gameState.value === "PLAYING"){
