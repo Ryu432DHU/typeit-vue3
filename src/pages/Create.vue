@@ -2,10 +2,11 @@
   <ti-sheet>
     <div class="w-11/12 mx-auto py-4">
       <template v-if="!isWordListCreated">
-      <h1 class="text-2xl mb-4">Creating a new word list</h1>
+      <h1 class="text-2xl mb-4">Create a new word list</h1>
       <ti-text-field v-model="wordListName" placeholder="Type the word list name" />
       <p v-if="!isWordListNameAvailable">The word list  "{{ wordListName }}" already existis.</p>
-      <ti-word-list-editor :words="words" />
+      <ti-word-list-editor v-model="words" />
+        <p>{{ words }}</p>
       <ti-button :disabled="!isWordListAvailable" @click="createWordList">Create</ti-button>
       </template>
       <template v-else>
@@ -24,12 +25,11 @@
         </ti-simple-table>
       </template>
     </div>
-    <p class="hidden">{{ words }}</p>
   </ti-sheet>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, inject } from 'vue';
+import { ref, inject } from 'vue';
 import { WordList } from '@/types.js'
 import { useCreateWordList } from './composables/useCreateWordList';
 import TiWordListEditor from '@/components/organisms/TiWordListEditor.vue';

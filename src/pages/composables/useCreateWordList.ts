@@ -12,7 +12,6 @@ export function useCreateWordList(){
   const isWordListWordsEmpty = computed(() => words.value.length === 0)
   const isWordListAvailable = computed(() => isWordListNameAvailable.value && !isWordListNameEmpty.value && !isWordListWordsEmpty.value)
 
-
   return {
     wordListName,
     words,

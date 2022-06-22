@@ -5,10 +5,10 @@
       <th>Word</th>
       <th>Actions</th>
     </tr>
-    <tr v-for="(word, index) in words" :key="index">
+    <tr v-for="(word, index) in localWords" :key="index">
       <td>{{ index + 1}}</td>
       <td>
-        <ti-text-field v-model="words[index]" />
+        <ti-text-field v-model="localWords[index]" />
       </td>
       <td>
         <ti-button @click="moveToUp(index)">Up</ti-button>
@@ -17,7 +17,7 @@
       </td>
     </tr>
     <tr>
-      <td>{{ words.length + 1}}</td>
+      <td>{{ localWords.length + 1}}</td>
       <td>
         <ti-text-field v-model="wordToAdd" ref="wordInputField" placeholder="Type a new word"/>
       </td>
@@ -29,14 +29,19 @@
 </template>
 
 <script setup lang="ts">
-import { ref, nextTick } from 'vue';
+import { ref, nextTick, watch } from 'vue';
 const props = defineProps<{
-  words: string[]
+  modelValue: string[]
 }>()
+const emits = defineEmits(['update:modelValue'])
 
-const localWords = ref(props.words)
+const localWords = ref([...props.modelValue])
 const wordToAdd = ref("")
 const wordInputField = ref()
+
+watch(localWords.value, () => {
+  emits('update:modelValue', localWords.value)
+})
 
 const addNewWord = () => {
   localWords.value.push(wordToAdd.value)
