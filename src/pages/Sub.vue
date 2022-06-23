@@ -3,14 +3,24 @@
     <div class="mb-8">
       <h1>This is Sub.vue</h1>
       <router-link to="/" class="underline">Go to the top page</router-link>
-      <ti-button>Hoge</ti-button>
+      <div class="mt-4">
+        <ti-button @click="modalOpen = true">open modal</ti-button>
+        <ti-modal v-if="modalOpen">
+          <div class="modal p-8 w-6/12 m-auto bg-white">
+            <p class="text-xl">Modal title</p>
+            <p>modal content</p>
+            <ti-button @click="modalOpen = false">Close modal</ti-button>
+          </div>
+        </ti-modal>
+      </div>
     </div>
   </ti-sheet>
 </template>
 
 <script setup lang="ts">
 import { ref, computed, reactive } from 'vue';
-import TiSheet from '../components/atoms/TiSheet.vue'
+
+const modalOpen = ref(false)
 
 const simpleRef = ref(0)
 const stringRef = ref("Hi")
