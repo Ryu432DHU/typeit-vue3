@@ -14,7 +14,7 @@
           <tr v-for="(record, index) in wordList.records">
             <td>{{ index + 1 }}</td>
             <td>{{ wordList.words.length }} words</td>
-            <td>{{ record.time }} seconds</td>
+            <td>{{ record.time }} sec<span class="hidden sm:inline">onds</span></td>
             <td>{{ new Date(record.date).toLocaleString() }}</td>
           </tr>
         </TiSimpleTable>
