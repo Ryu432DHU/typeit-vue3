@@ -15,6 +15,13 @@ export function useTypingGame(wordList: ComputedRef<WordList>){
   const getRoundedClerTime = computed(() => timeRecorder.getRoundedTime())
   const addTimeRecord: Function = inject("addTimeRecord")!
 
+  const initializeGame = () => {
+    currentWordIndex.value = 0
+    wordInputFieldValue.value = ""
+    timeRecorder.init()
+    nextTick(() => gameState.value = "STAND_BY")
+  }
+
   watch(wordInputFieldValue, () => {
     if(isNextWordExisting.value){
       if(gameState.value === "STAND_BY"){
@@ -43,5 +50,6 @@ export function useTypingGame(wordList: ComputedRef<WordList>){
     isNextWordExisting,
     timeRecorder,
     getRoundedClerTime,
+    initializeGame
   }
 }
