@@ -24,24 +24,47 @@
   </ti-sheet>
   <ti-sheet>
     <div class="w-11/12 mx-auto py-4">
-      <h1 class="text-2xl mb-6">Reset Data</h1>
-      <h2 class="text-xl my-2">Reset LocalStorage</h2>
-      <p class="text-sm">This operetion permanently deletes LocalStorage Data(wordLists) and cannot be undone.</p>
-      <p class="text-sm">Confirmation Dialog is not shown!!!</p>
-      <p class="text-base my-4">
-        <ti-button @click="deleteWordLists">Reset</ti-button>
-      </p>
+      <section class="mb-8">
+        <h1 class="text-2xl mb-4">Reset Data</h1>
+        <h2 class="text-xl mb-2">Reset LocalStorage</h2>
+        <p class="text-sm">This operetion permanently deletes user data like wordLists and cannot be undone.</p>
+        <p class="text-base my-4">
+          <ti-button @click="modalOpen = true">Reset</ti-button>
+          <ti-modal v-if="modalOpen">
+            <p class="text-2xl mb-4">Reset LocalStorage</p>
+            <p class="text-sm">This operetion permanently deletes user data like wordLists and cannot be undone</p>
+            <p class="my-4">
+              <ti-button @click="resetUserData" class="mr-4">Reset</ti-button>
+              <ti-button @click="modalOpen = false">Cancel</ti-button>
+            </p>
+          </ti-modal>
+        </p>
+      </section>
+      <section>
+        <h1 class="text-2xl mb-4">Move to Sub.vue</h1>
+        <h2 class="text-xl mb-2">Sub.vue is a playground</h2>
+        <p class="text-sm">Move to Sub.vue</p>
+        <p class="text-base my-4">
+          <router-link to="sub">
+            <ti-button>Move</ti-button>
+          </router-link>
+        </p>
+      </section>
     </div>
   </ti-sheet>
 </template>
 
 <script setup lang="ts">
-import { inject } from 'vue'
-import TiSheet from '@/components/atoms/TiSheet.vue';
+import { ref, inject } from 'vue'
 import { WordList } from '@/types';
-import TiSimpleTable from '@/components/atoms/TiSimpleTable.vue';
 import TiButton from '@/components/atoms/TiButton.vue';
 
+const modalOpen = ref(false)
 const wordLists: WordList[] = inject("wordLists")!
-const deleteWordLists: ((payload: MouseEvent) => void) = inject("deleteWordLists")!
+const resetUserData = () => {
+  const deleteWordLists: Function = inject("deleteWordLists")!
+
+  deleteWordLists()
+  modalOpen.value = false
+}
 </script>
