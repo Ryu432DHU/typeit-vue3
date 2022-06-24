@@ -1,5 +1,5 @@
 <template>
-  <nav class="bg-neutral-900">
+  <nav class="bg-neutral-900 overflow-x-hidden">
     <div class="container max-w-7xl w-10/12 mx-auto flex justify-between items-center">
       <h1 class="text-2xl text-white font-light">
         <router-link to="/">TypeIt</router-link>

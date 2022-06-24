@@ -24,9 +24,9 @@
   </ti-sheet>
   <ti-sheet>
     <div class="w-11/12 mx-auto py-4">
+      <h1 class="text-2xl mb-8">Developer menu</h1>
       <section class="mb-8">
-        <h1 class="text-2xl mb-4">Reset Data</h1>
-        <h2 class="text-xl mb-2">Reset LocalStorage</h2>
+        <h1 class="text-xl mb-2">Reset LocalStorage</h1>
         <p class="text-sm">This operetion permanently deletes user data like wordLists and cannot be undone.</p>
         <p class="text-base my-4">
           <ti-button @click="modalOpen = true">Reset</ti-button>
@@ -41,9 +41,8 @@
         </p>
       </section>
       <section>
-        <h1 class="text-2xl mb-4">Move to Sub.vue</h1>
-        <h2 class="text-xl mb-2">Sub.vue is a playground</h2>
-        <p class="text-sm">Move to Sub.vue</p>
+        <h1 class="text-xl mb-2">Move to Sub.vue</h1>
+        <p class="text-sm">Sub.vue is a playground</p>
         <p class="text-base my-4">
           <router-link to="sub">
             <ti-button>Move</ti-button>
@@ -61,9 +60,8 @@ import TiButton from '@/components/atoms/TiButton.vue';
 
 const modalOpen = ref(false)
 const wordLists: WordList[] = inject("wordLists")!
+const deleteWordLists: () => void = inject("deleteWordLists")!
 const resetUserData = () => {
-  const deleteWordLists: Function = inject("deleteWordLists")!
-
   deleteWordLists()
   modalOpen.value = false
 }
