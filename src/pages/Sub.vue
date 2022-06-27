@@ -5,11 +5,11 @@
       <router-link to="/" class="underline">Go to the top page</router-link>
       <div class="mt-4">
         <ti-button @click="modalOpen = true">open modal</ti-button>
-        <ti-modal v-if="modalOpen">
+        <ti-dialog v-if="modalOpen">
           <p class="text-xl">Modal title</p>
           <p>modal content</p>
           <ti-button @click="modalOpen = false">Close modal</ti-button>
-        </ti-modal>
+        </ti-dialog>
       </div>
     </div>
   </ti-sheet>

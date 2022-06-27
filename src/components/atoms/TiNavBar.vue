@@ -14,14 +14,20 @@
       </ul>
       <span @click="drawerOpen = true" class="block sm:hidden px-8 py-6 text-white hover:bg-neutral-800">=</span>
       <ti-navigation-drawer v-if="drawerOpen">
-        <ul class="bg-white w-7/12 h-full">
+      <div class="bg-white w-5/12 h-full pt-8">
+        <h1 class="flex justify-between items-center text-2xl pl-4 mb-8">
+          <span>Links</span>
+          <span @click="drawerOpen = false" class="block text-sm bg-neutral-200 rounded-lg mr-4 p-4">Close</span>
+        </h1>
+        <ul>
           <li v-for="route in routes" :key="route.path" @click="drawerOpen = false">
-            <router-link :to="route.path" class="block text-sm px-4 py-6 transition duration-150 hover:bg-neutral-100">{{ route.text }}</router-link>
+            <router-link :to="route.path" class="block text-sm px-8 py-6 transition duration-150 hover:bg-neutral-100">{{ route.text }}</router-link>
           </li>
           <li @click="drawerOpen = false">
-            <a href="https://github.com/Ryu432DHU/typeit-vue3" class="text-sm inline-block px-4 py-6">GitHub</a>
+            <a href="https://github.com/Ryu432DHU/typeit-vue3" class="text-sm block px-8 py-6 hover:bg-neutral-100">GitHub</a>
           </li>
         </ul>
+      </div>
       </ti-navigation-drawer>
     </div>
   </nav>
