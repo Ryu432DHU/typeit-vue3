@@ -12,12 +12,14 @@
           <a href="https://github.com/Ryu432DHU/typeit-vue3" class="text-neutral-400 text-sm inline-block px-4 py-6">GitHub</a>
         </li>
       </ul>
-      <span @click="drawerOpen = true" class="block sm:hidden px-8 py-6 text-white hover:bg-neutral-800">=</span>
+      <span @click="drawerOpen = true" class="block text-lg sm:hidden px-8 py-4 text-white hover:bg-neutral-800">=</span>
       <ti-navigation-drawer v-if="drawerOpen">
-      <div class="bg-white w-5/12 h-full pt-8">
+      <div class="bg-white w-7/12 h-screen pt-4">
         <h1 class="flex justify-between items-center text-2xl pl-4 mb-8">
           <span>Links</span>
-          <span @click="drawerOpen = false" class="block text-sm bg-neutral-200 rounded-lg mr-4 p-4">Close</span>
+          <div @click="drawerOpen = false" class="flex items-center justify-center bg-neutral-100 rounded-lg mr-4 h-10 w-10">
+            <span class="block rotate-45 text-lg">+</span>
+          </div>
         </h1>
         <ul>
           <li v-for="route in routes" :key="route.path" @click="drawerOpen = false">
