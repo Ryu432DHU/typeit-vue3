@@ -30,7 +30,7 @@
 
 <script setup lang="ts">
 import { ref, inject } from 'vue';
-import { WordList } from '@/types.js'
+import { WordList } from '@/types'
 import { useCreateWordList } from './composables/useCreateWordList';
 import TiWordListEditor from '@/components/organisms/TiWordListEditor.vue';
 
