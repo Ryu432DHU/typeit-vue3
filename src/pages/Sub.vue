@@ -11,23 +11,13 @@
           <ti-button @click="modalOpen = false">Close modal</ti-button>
         </ti-modal>
       </div>
-      <div class="mt-4">
-        <ti-button @click="drawerOpen = true">Open Drawer</ti-button>
-        <ti-navigation-drawer>
-          
-        </ti-navigation-drawer>
-      </div>
     </div>
   </ti-sheet>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import TiNavigationDrawer from '../components/atoms/TiNavigationDrawer.vue';
-
 
 const modalOpen = ref(false)
-const drawerOpen = ref(false)
-
 </script>
 
