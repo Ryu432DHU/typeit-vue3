@@ -8,8 +8,8 @@
     </tr>
     <tr v-for="(record, index) in filteredTop5records">
       <td>{{ index + 1 }}</td>
-      <td class="hidden sm:table-cell">{{ wordList.words.length }} words</td>
-      <td>{{ record.time }} sec<span class="hidden sm:inline">onds</span></td>
+      <td >{{ wordList.words.length }} words</td>
+      <td>{{ record.time }} seconds</td>
       <td>{{ getRecordDateText(record.date) }}</td>
     </tr>
   </ti-simple-table>
