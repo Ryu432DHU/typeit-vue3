@@ -18,12 +18,12 @@
         <h1 class="flex justify-between items-center text-2xl pl-4 mb-8">
           <span>Links</span>
           <div @click="drawerOpen = false" class="flex items-center justify-center bg-neutral-100 rounded-lg mr-4 h-10 w-10">
-            <span class="block rotate-45 text-lg">+</span>
+            <span class="block rotate-45 text-2xl">+</span>
           </div>
         </h1>
         <ul>
           <li v-for="route in routes" :key="route.path" @click="drawerOpen = false">
-            <router-link :to="route.path" class="block text-sm px-8 py-6 transition duration-150 hover:bg-neutral-100">{{ route.text }}</router-link>
+            <router-link :to="route.path" class="block px-8 py-6 transition duration-150 hover:bg-neutral-100">{{ route.text }}</router-link>
           </li>
           <li @click="drawerOpen = false">
             <a href="https://github.com/Ryu432DHU/typeit-vue3" class="text-sm block px-8 py-6 hover:bg-neutral-100">GitHub</a>
