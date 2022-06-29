@@ -13,6 +13,23 @@
       </div>
     </div>
   </ti-sheet>
+  <ti-sheet class="my-4">
+    <h1>Teleport</h1>
+    <div>
+      <ti-button @click="show = !show">Toggle / {{ show }}</ti-button>
+      <transition name="fade">
+        <p v-if="show">Toggle content</p>
+      </transition>
+        <teleport to="#app">
+          <transition name="fade">
+            <p v-if="show">hoge</p>
+          </transition>
+        </teleport>
+      <teleport-test>
+        <p>Teleported content</p>
+      </teleport-test>
+    </div>
+  </ti-sheet>
   <ti-sheet class="mt-8">
     <h1>attrsTest.vue</h1>
     <attrs-test class="hoge" hoge="foo">
@@ -24,10 +41,25 @@
   </ti-sheet>
 </template>
 
+<style lang="scss">
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
+
 <script setup lang="ts">
 import { ref } from 'vue';
 import AttrsTest from '@/components/atoms/attrsTest.vue';
+import TeleportTest from '@/components/atoms/teleportTest.vue';
+import TiButton from '@/components/atoms/TiButton.vue';
 
 const modalOpen = ref(false)
+const show = ref(true)
 </script>
 
