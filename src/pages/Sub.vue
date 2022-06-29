@@ -13,10 +13,20 @@
       </div>
     </div>
   </ti-sheet>
+  <ti-sheet class="mt-8">
+    <h1>attrsTest.vue</h1>
+    <attrs-test class="hoge" hoge="foo">
+      <div>
+        <h1>Slot contents</h1>
+        <p>This is a slot contents</p>
+      </div>
+    </attrs-test>
+  </ti-sheet>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import AttrsTest from '@/components/atoms/attrsTest.vue';
 
 const modalOpen = ref(false)
 </script>
