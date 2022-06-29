@@ -26,18 +26,11 @@
           </transition>
         </teleport>
       <teleport-test>
-        <p>Teleported content</p>
+        <transition name="fade">
+          <p v-if="show" class="bg-slate-400 p-8">Teleported content</p>
+        </transition>
       </teleport-test>
     </div>
-  </ti-sheet>
-  <ti-sheet class="mt-8">
-    <h1>attrsTest.vue</h1>
-    <attrs-test class="hoge" hoge="foo">
-      <div>
-        <h1>Slot contents</h1>
-        <p>This is a slot contents</p>
-      </div>
-    </attrs-test>
   </ti-sheet>
 </template>
 
