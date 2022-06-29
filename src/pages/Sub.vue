@@ -30,6 +30,14 @@
           <p v-if="show" class="bg-slate-400 p-8">Teleported content</p>
         </transition>
       </teleport-test>
+      <transition name="fade">
+        <div v-if="show">
+          <hello-world />
+        </div>
+      </transition>
+      <transition name="fade">
+          <hello-world v-if="show" />
+      </transition>
     </div>
   </ti-sheet>
 </template>
@@ -48,9 +56,9 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import AttrsTest from '@/components/atoms/attrsTest.vue';
 import TeleportTest from '@/components/atoms/teleportTest.vue';
 import TiButton from '@/components/atoms/TiButton.vue';
+import HelloWorld from '../components/atoms/HelloWorld.vue';
 
 const modalOpen = ref(false)
 const show = ref(true)
