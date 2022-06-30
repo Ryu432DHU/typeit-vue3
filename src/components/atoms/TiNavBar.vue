@@ -12,9 +12,8 @@
           <a href="https://github.com/Ryu432DHU/typeit-vue3" class="text-neutral-400 text-sm inline-block px-4 py-6">GitHub</a>
         </li>
       </ul>
-      <span @click="drawerOpen = true" class="block text-lg sm:hidden px-8 py-4 text-white hover:bg-neutral-800">=</span>
-      <ti-navigation-drawer v-if="drawerOpen">
-      <div class="bg-white w-7/12 h-screen pt-4">
+      <span @click="drawerOpen = !drawerOpen" class="block text-lg sm:hidden px-8 py-4 text-white hover:bg-neutral-800">=</span>
+      <div id="nav" :class="{hoge: drawerOpen}" class="fixed top-0 left-0 z-10 bg-white w-7/12 h-screen pt-4">
         <h1 class="flex justify-between items-center text-2xl pl-4 mb-8">
           <span>Links</span>
           <div @click="drawerOpen = false" class="flex items-center justify-center bg-neutral-100 rounded-lg mr-4 h-10 w-10">
@@ -26,14 +25,24 @@
             <router-link :to="route.path" class="block px-8 py-6 transition duration-150 hover:bg-neutral-100">{{ route.text }}</router-link>
           </li>
           <li @click="drawerOpen = false">
-            <a href="https://github.com/Ryu432DHU/typeit-vue3" class="text-sm block px-8 py-6 hover:bg-neutral-100">GitHub</a>
+            <a href="https://github.com/Ryu432DHU/typeit-vue3" class="block px-8 py-6 hover:bg-neutral-100">GitHub</a>
           </li>
         </ul>
       </div>
-      </ti-navigation-drawer>
     </div>
   </nav>
 </template>
+
+<style lang="scss">
+#nav {
+  transition: transform 0.5s ease;
+  transform: translateX(-100%);
+
+  &.hoge {
+    transform: translateX(0%);
+  }
+}
+</style>
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
