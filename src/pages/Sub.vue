@@ -1,21 +1,21 @@
 <template>
   <ti-sheet class="p-8">
-    <div class="mb-8">
-      <h1>This is Sub.vue</h1>
-      <router-link to="/" class="underline">Go to the top page</router-link>
-      <div class="mt-4">
-        <ti-button @click="modalOpen = true">open modal</ti-button>
-        <ti-dialog v-if="modalOpen">
-          <p class="text-xl">Modal title</p>
-          <p>modal content</p>
-          <ti-button @click="modalOpen = false">Close modal</ti-button>
-        </ti-dialog>
+    <h1>Sidebar</h1>
+    <ti-button @click="sidebarOpen = !sidebarOpen">Open / {{ sidebarOpen }}</ti-button>
+    <teleport to="#app">
+      <div id="sidebar" :class="{'active': sidebarOpen}" class="fixed h-screen bg-white">
+        <ul>
+          <li class="px-4 py-4 hover:bg-slate-50">Item 1</li>
+          <li class="px-4 py-4 hover:bg-slate-50">Item 2</li>
+          <li class="px-4 py-4 hover:bg-slate-50">Item 3</li>
+        </ul>
+        <ti-button @click="sidebarOpen = false">Close</ti-button>
       </div>
-    </div>
+    </teleport>
   </ti-sheet>
-  <ti-sheet class="my-4">
+  <ti-sheet class="my-4 p-8">
     <h1>Teleport</h1>
-    <div>
+    <div id="teleport">
       <ti-button @click="show = !show">Toggle / {{ show }}</ti-button>
       <transition name="fade">
         <p v-if="show">Toggle content</p>
@@ -36,13 +36,28 @@
         </div>
       </transition>
       <transition name="fade">
-          <hello-world v-if="show" />
+        <hello-world v-if="show" />
       </transition>
     </div>
   </ti-sheet>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
+#sidebar {
+  width: 100px;
+  transition: transform 0.5s ease;
+  position: absolute;
+  top: 0px;
+  overflow: hidden;
+  transform: translateX(-100px);
+
+  &.active {
+    transform: translateX(0px);
+  }
+}
+</style>
+
+<style lang="scss" scoped>
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s ease;
@@ -60,7 +75,7 @@ import TeleportTest from '@/components/atoms/teleportTest.vue';
 import TiButton from '@/components/atoms/TiButton.vue';
 import HelloWorld from '../components/atoms/HelloWorld.vue';
 
-const modalOpen = ref(false)
 const show = ref(true)
+const sidebarOpen = ref(true)
 </script>
 
