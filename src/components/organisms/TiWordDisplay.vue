@@ -1,11 +1,11 @@
 <template>
   <div class="relative">
-    <div class="inline-block text-sm text-white absolute px-4 py-1" :class="stateChipColor">state: {{ gameState }}</div>
+    <div class="inline-block text-xs sm:text-sm text-white absolute px-4 py-1" :class="stateChipColor">state: {{ gameState }}</div>
     <template v-if="gameState === 'FINISHED'">
-      <div class="bg-green-600 text-white text-center text-2xl p-10">Clear Time: {{ clearTime }} seconds</div>
+      <div class="bg-green-600 text-white text-center text-lg px-10 py-6 sm:p-10 sm:text-2xl">Clear Time: {{ clearTime }} seconds</div>
     </template>
     <template v-else>
-      <div class="bg-neutral-800 text-white text-center text-2xl p-10">
+      <div class="bg-neutral-800 text-white text-center text-lg px-10 py-6 sm:p-10 sm:text-2xl">
         <template v-if="word">
           <span v-for="(letter, index) in word.split('')" :class="computeHighlightColor(inputAccuracyCollections[index])">{{ letter }}</span>
         </template>

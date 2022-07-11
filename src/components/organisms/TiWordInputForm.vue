@@ -1,7 +1,7 @@
 <template>
   <input type="text"
          placeholder="Type the word above here"
-         class="block w-full outline-none bg-neutral-800 text-white text-center text-2xl p-10 rounded-none focus:bg-neutral-900 transition-all duration-300"
+         class="block w-full outline-none bg-neutral-800 text-white text-center text-lg sm:text-2xl px-10 py-6 sm:p-10 rounded-none focus:bg-neutral-900 transition-all duration-300"
          @input="updateModelValue($event)"
          :value="modelValue"
   >
