@@ -2,7 +2,7 @@
   <ti-simple-table>
     <tr>
       <th>No.</th>
-      <th class="hidden sm:table-cell">Length</th>
+      <th >Length</th>
       <th>Time</th>
       <th>Date</th>
     </tr>
