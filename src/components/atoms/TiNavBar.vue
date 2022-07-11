@@ -58,5 +58,13 @@ const routes = [
   { path: "/edit", text: "Edit" },
 ]
 
-const linkColors = computed(() => routes.map(route => route.path === router.currentRoute.value.path ? 'text-white' : 'text-neutral-400'))
+// route.path , router.currentRoute.value.path
+
+const linkColors = computed(() => routes.map(route => {
+  if(router.currentRoute.value.path.includes("/edit")){
+    return route.path.includes("/edit") ? "text-white" : "text-neutral-400"
+  } else {
+    return route.path === router.currentRoute.value.path ? "text-white" : "text-neutral-400"
+  }
+}))
 </script>
