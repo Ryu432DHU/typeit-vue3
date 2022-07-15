@@ -7,6 +7,7 @@ export type WordList = {
   name: string,
   words: string[],
   records: WordListRecord[],
+  isDeletable: boolean,
   description?: string
 }
 
