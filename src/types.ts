@@ -6,7 +6,8 @@ export type WordListRecord = {
 export type WordList = {
   name: string,
   words: string[],
-  records: WordListRecord[]
+  records: WordListRecord[],
+  description?: string
 }
 
 export type GameState = "STAND_BY" | "PLAYING" | "FINISHED"
