@@ -38,38 +38,51 @@
         <p>ここでは簡単にTypeItの遊び方(使い方)を説明します。</p>
       </section>
       <section class="mb-8">
-        <h2 class="text-xl my-4">1. 単語リストの選択方法</h2>
-        <p>最初に「Word lists」という見出しの下にあるリストから「Play」ボタンで任意の単語リストを選択します。</p>
+        <h2 class="text-xl my-4">1. 単語リストの選択</h2>
+        <p>「Word lists」という見出しの下にあるリストから「Play」ボタンで任意の単語リストを選択します。</p>
         <p>ボタンのテキストが「Selected」になれば正しく単語リストが選択されています。</p>
       </section>
       <section class="mb-8">
         <h2 class="text-xl my-4">2. ゲームの始め方</h2>
         <p>
-          基本的に、背景が黒色のエリアに表示されている文字を「Type the word above here」というテキストが<br>
-          表示されている部分に入力するだけのシンプルな仕組みです。
+          黒背景のエリアに表示されている文字をその下のフォームに入力するだけのシンプルな仕組みです。
         </p>
         <p>
           入力した文字が間違っていれば「赤」、正しければ「緑」で文字がハイライトされます。
         </p>
       </section>
       <section class="mb-8">
-        <h2 class="text-xl my-4">3. その他の説明</h2>
-        <p>背景が黒色のエリアの左上にあるチップは現在のゲームの状況を表示しています。</p>
-        <p>stateが「STAND_BY」であればゲーム開始前、「PLAYING」であればプレイ中、「FINISHED」ならゲーム終了です。</p>
+        <h2 class="text-xl my-4">3. プレイ状況の説明</h2>
+        <p>黒背景エリアの左上にあるチップは現在のゲームの状況を表示しています。</p>
+        <p>stateが「STAND_BY」=ゲーム開始前、「PLAYING」=プレイ中、「FINISHED」=ゲーム終了です。</p>
         <p>stateは単語リスト切り替えたりページを再読み込みするとゲーム開始前の「STAND_BY」になります。</p>
       </section>
       <section class="mb-8">
-        <h2 class="text-xl my-4">4. Rankingsページ</h2>
+        <h2 class="text-xl my-4">4. タイムレコードとランキングの説明</h2>
+        <p>最後の単語の入力が終わるとゲームクリアとなりタイピングにかかった時間が表示されます。</p>
+        <p>タイピングにかかった時間は「Rankings」という見出しの下のリストに記録、追加されます。</p>
+        <p>なお、「No.」が「EX」になっている一番上のタイムレコードは開発者のタイムです。</p>
+        <p>私を超えられるように頑張ってくださいね🥳</p>
+      </section>
+    </div>
+  </ti-sheet>
+  <ti-sheet class="mb-12">
+    <div class="w-11/12 mx-auto py-4">
+      <section class="mb-8">
+        <h1 class="text-2xl mb-6">各ページの説明</h1>
+      </section>
+      <section class="mb-8">
+        <h2 class="text-xl my-4">1. Rankingsページ</h2>
         <p>アプリ上部にあるナビゲーションからRankingsページに移動できます。</p>
         <p>Rankingsページでは各単語リストのタイムレコード(タイピングにかかった時間)を確認できます。</p>
       </section>
       <section class="mb-8">
-        <h2 class="text-xl my-4">5. Createページ</h2>
+        <h2 class="text-xl my-4">2. Createページ</h2>
         <p>アプリ上部にあるナビゲーションからCreateページに移動できます。</p>
         <p>Cretaeページでは自分の好きな単語リストを作成することができます。</p>
       </section>
       <section class="mb-8">
-        <h2 class="text-xl my-4">6. Editページ</h2>
+        <h2 class="text-xl my-4">3. Editページ</h2>
         <p>アプリ上部にあるナビゲーションからEditページに移動できます。</p>
         <p>Editページでは作成した単語リストを編集することができます。</p>
       </section>
