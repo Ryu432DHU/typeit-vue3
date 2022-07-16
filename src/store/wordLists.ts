@@ -1,44 +1,56 @@
 import { WordList } from '../types'
 
-const wordLists: WordList[] = [
+const wordlists: WordList[] = [
   {
     name: "Colors",
-    words: ["Gray", "Red", "Orange", "Amber", "Yellow", "Lime", "Green", "Emerald", "Cyan", "Blue", "Indigo", "Purple", "Pink", "Rose"],
-    records: [],
+    words: ["gray", "red", "orange", "amber", "yellow", "lime", "green", "emerald", "cyan", "blue", "indigo", "purple", "pink", "rose"],
+    records: [
+      {date: "2022-07-16T11:17:20.477Z", time: 16.6}
+    ],
     isDeletable: false
   },
   {
     name: "Genshin Impact | Mondstadt",
-    words: ["Albed", "Amber", "Barbara", "Bennett", "Diluc", "Diona", "Eula", "Fischl", "Jean", "Kaeya", "Klee", "Lisa", "Mona", "Noelle", "Razor", "Rosaria", "Sucrose", "Venti"],
-    records: [],
+    words: ["albed", "amber", "barbara", "bennett", "diluc", "diona", "eula", "fischl", "jean", "kaeya", "klee", "lisa", "mona", "noelle", "razor", "rosaria", "sucrose", "venti"],
+    records: [
+      {date: "2022-07-16T11:18:53.053Z", time: 25.8}
+    ],
     isDeletable: false
   },
   {
     name: "Genshin Impact | Liyue",
-    words: ["Beidou", "Chongyun", "Ganyu", "Hu Tao", "Keqing", "Ningguang", "Qiqi", "Shenhe", "Xiangling", "Xiao", "Xingqiu", "Xinyan", "Yanfei", "Yelan", "Yun Jin", "Zhongli"],
-    records: [],
+    words: ["beidou", "chongyun", "ganyu", "hu tao", "keqing", "ningguang", "qiqi", "shenhe", "xiangling", "xiao", "xingqiu", "xinyan", "yanfei", "yelan", "yun jin", "zhongli"],
+    records: [
+      {date: "2022-07-16T11:19:26.342Z", time: 29.6}
+    ],
     isDeletable: false
   },
   {
     name: "Genshin Impact | Inzazuma",
-    words: ["Arataki Itto", "Gorou", "Kaedehara Kazuha", "Kamisato Ayaka", "Kamisato Ayato", "Kujou Sara", "Kuki Shinobu", "Raiden Shogun", "Sangonomiya Kokomi", "Sayu", "Shikanoin Heizou", "Thoma", "Yae Miko", "Yoimiya"],
-    records: [],
+    words: ["arataki itto", "gorou", "kaedehara kazuha", "kamisato ayaka", "kamisato ayato", "kujou sara", "kuki shinobu", "raiden shogun", "sangonomiya kokomi", "sayu", "shikanoin heizou", "thoma", "yae miko", "yoimiya"],
+    records: [
+      {date: "2022-07-16T11:19:59.578Z", time: 30.1}
+    ],
     isDeletable: false
   },
   {
     name: "Arknights 1",
-    words: ["Jessica", "Haze", "Ch'en", "Amiya", "Ifrit", "Eyjafjalla", "Vigna", "Blaze", "Savage", "Projekt Red"],
-    records: [],
+    words: ["jessica", "haze", "ch'en", "amiya", "ifrit", "eyjafjalla", "vigna", "blaze", "savage", "projekt red"],
+    records: [
+      {date: "2022-07-16T11:20:26.310Z", time: 22.3}
+    ],
     isDeletable: false
   },
   {
     name: "Arkinghts 2",
-    words: ["Frostleaf", "Vermeli", "Cuora", "Gitano", "Rope", "Exusiai", "Angelina", "Sussurro", "Surtr", "Schwarz"],
-    records: [],
+    words: ["frostleaf", "vermeli", "cuora", "gitano", "rope", "exusiai", "angelina", "sussurro", "surtr", "schwarz"],
+    records: [
+      {date: "2022-07-16T11:20:46.308Z", time: 17.1}
+    ],
     isDeletable: false
   }
 ]
 
-export default function fetchWordLists(){
-  return wordLists
+export default function fetchwordlists(){
+  return wordlists
 }
