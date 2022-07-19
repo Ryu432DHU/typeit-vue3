@@ -1,8 +1,8 @@
 <template>
   <div class="root">
-    <div class="text-field">
+    <div class="text-field" :class="{ 'text-field--error' : hasError }">
       <input type="text" @input="updateModelValue($event)" ref="textField" :value="modelValue" :placeholder="placeholder">
-    <div class="border-bottom"></div>
+      <div class="border-bottom"></div>
     </div>
     <span class="counter" :class="{ 'text-red-500' : doesExceedCount }">{{ counterText }}</span>
   </div>
@@ -24,6 +24,7 @@ const updateModelValue = (event:Event) => {
   emit('update:modelValue', (event.target as HTMLInputElement).value)
 }
 
+const hasError = computed(() => doesExceedCount.value)
 const doesExceedCount = computed(() => {
  if(!props.count) return
  return props.count < props.modelValue.length
@@ -45,6 +46,14 @@ defineExpose({focusInput})
   .text-field {
     position:  relative;
 
+    &.text-field--error {
+      &::before,
+      &:hover::before,
+      .border-bottom {
+        background: #ef4444;
+      }
+    }
+
     &::before {
       background: #a3a3a3;
       content: '';
@@ -60,8 +69,8 @@ defineExpose({focusInput})
     input {
       background: transparent;
       box-sizing: border-box;
-      line-height: 1rem;
-      padding: 0.5rem 1rem;
+      line-height: 2rem;
+      padding: 0;
       position: relative;
       width: 100%;
       outline: none;
