@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="root">
     <input type="text" @input="updateModelValue($event)" ref="textField" :value="modelValue" :placeholder="placeholder">
     <div class="border-bottom"></div>
   </div>
@@ -26,13 +26,13 @@ defineExpose({focusInput})
 </script>
 
 <style scoped lang="scss">
-div {
+.root {
   position: relative;
   line-height: initial;
   height: initial;
 
   &::before {
-    background: #aaa;
+    background: #a3a3a3;
     content: '';
     display: block;
     height: 1px;
@@ -51,21 +51,11 @@ div {
     position: relative;
     width: 100%;
     outline: none;
-
-    & > ::after {
-      background: #0ea5e9;
-      content: '';
-      display: block;
-      height: 2px;
-      width: 100%;
-      position: absolute;
-      bottom: 0px;
-    }
   }
   &:hover {
     &::before {
       height: 2px;
-      background: #000;
+      background: #404040;
     }
   }
 
