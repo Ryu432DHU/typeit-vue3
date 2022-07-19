@@ -22,7 +22,7 @@
       </ti-simple-table>
     </div>
   </ti-sheet>
-  <!-- <ti-sheet>
+  <ti-sheet>
     <div class="w-11/12 mx-auto py-4">
       <h1 class="text-2xl mb-8">Developer menu</h1>
       <section class="mb-8">
@@ -50,7 +50,7 @@
         </p>
       </section>
     </div>
-  </ti-sheet> -->
+  </ti-sheet>
 </template>
 
 <script setup lang="ts">
