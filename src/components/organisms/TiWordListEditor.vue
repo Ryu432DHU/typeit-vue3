@@ -8,7 +8,7 @@
     <tr v-for="(word, index) in localWords" :key="index">
       <td>{{ index + 1}}</td>
       <td>
-        <ti-text-field v-model="localWords[index]" />
+        <ti-text-field v-model="localWords[index]" count="155" />
       </td>
       <td>
         <ti-button @click="moveToUp(index)">Up</ti-button>
