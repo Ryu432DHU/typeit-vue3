@@ -23,7 +23,7 @@
     </div>
   </ti-sheet>
   <ti-sheet>
-    <div class="w-11/12 mx-auto py-4">
+    <div class="w-11/12 mx-auto py-8">
       <h1 class="text-2xl mb-8">Developer menu</h1>
       <section class="mb-8">
         <h1 class="text-xl mb-2">Reset LocalStorage</h1>
