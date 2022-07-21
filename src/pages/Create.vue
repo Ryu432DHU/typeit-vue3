@@ -48,7 +48,8 @@ const createWordList = (): WordList => {
   const newWordList = {
     name: wordListName.value,
     words: words.value,
-    records: []
+    records: [],
+    isDeletable: true
   }
   
   addWordList(newWordList)
