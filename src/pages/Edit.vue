@@ -30,14 +30,14 @@
         <p class="text-sm">This operetion permanently deletes user data like wordLists and cannot be undone.</p>
         <p class="text-base my-4">
           <ti-button @click="modalOpen = true">Reset</ti-button>
-          <ti-modal v-if="modalOpen">
+          <ti-dialog v-if="modalOpen">
             <p class="text-2xl mb-4">Reset LocalStorage</p>
             <p class="text-sm">This operetion permanently deletes user data like wordLists and cannot be undone</p>
             <p class="my-4">
               <ti-button @click="resetUserData" class="mr-4">Reset</ti-button>
               <ti-button @click="modalOpen = false">Cancel</ti-button>
             </p>
-          </ti-modal>
+          </ti-dialog>
         </p>
       </section>
       <section>
