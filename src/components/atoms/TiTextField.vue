@@ -9,7 +9,7 @@
         ref="textField" :value="modelValue" :placeholder="placeholderText">
       <div class="border-bottom"></div>
     </div>
-    <span class="counter" :class="{ 'text-red-500' : doesExceedCount }">{{ counterText }}</span>
+    <span class="counter" :class="{ 'counter--error' : doesExceedCount }">{{ counterText }}</span>
   </div>
 </template>
 
@@ -136,6 +136,10 @@ defineExpose({focusInput})
     position: absolute;
     bottom: 2px;
     right: 0;
+
+    &--error {
+      color: #ef4444;
+    }
   }
 }
 </style>
