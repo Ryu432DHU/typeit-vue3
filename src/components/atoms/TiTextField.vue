@@ -2,7 +2,11 @@
   <div class="ti-text-field">
     <div class="text-field" :class="{ 'text-field--error' : hasError }">
       <span class="text-field-label" :class="{ 'text-field-label--is-active': shouldMoveLabel }">{{ textFieldLabel }}</span>
-      <input type="text" @input="updateModelValue($event)" ref="textField" :value="modelValue" :placeholder="placeholder">
+      <input type="text"
+        @input="updateModelValue($event)"
+        @focus="isTextFieldFocused = true"
+        @focusout="isTextFieldFocused = false"
+        ref="textField" :value="modelValue" :placeholder="placeholderText">
       <div class="border-bottom"></div>
     </div>
     <span class="counter" :class="{ 'text-red-500' : doesExceedCount }">{{ counterText }}</span>
@@ -26,8 +30,12 @@ const updateModelValue = (event:Event) => {
   emit('update:modelValue', (event.target as HTMLInputElement).value)
 }
 
-const shouldMoveLabel = computed(() => 0 < props.modelValue.length)
-
+const isTextFieldFocused = ref(false)
+const shouldMoveLabel = computed(() => isTextFieldFocused.value || 0 < props.modelValue.length)
+const placeholderText = computed(() => {
+  if(!props.placeholder) return
+  return isTextFieldFocused.value ? props.placeholder : ''
+})
 const hasError = computed(() => doesExceedCount.value)
 const doesExceedCount = computed(() => {
  if(!props.count) return
@@ -52,14 +60,15 @@ defineExpose({focusInput})
     position:  relative;
 
     .text-field-label {
-      transition: top 0.25s;
+      color: #737373;
       font-size: 1rem;
+      transition: top 0.25s;
       position: absolute;
       top: 8px;
       left: 0;
 
       &--is-active {
-        color: #a3a3a3;
+        color: #3b82f6;
         font-size: 0.875rem;
         top: -8px;
       }
@@ -71,10 +80,14 @@ defineExpose({focusInput})
       .border-bottom {
         background: #ef4444;
       }
+
+      .text-field-label {
+        color: #ef4444;
+      }
     }
 
     &::before {
-      background: #a3a3a3;
+      background: #737373;
       content: '';
       display: block;
       height: 1px;

@@ -5,8 +5,8 @@
       <p>Write down your favorite character's name below</p>
       <ti-text-field 
         v-model="text"
-        label="What's your favorite character?"
-        placeholder="Miku Hatsune"
+        label="Who's your favorite character?"
+        placeholder="Miku"
         :count="12" /> 
     </div>
   </ti-sheet>
