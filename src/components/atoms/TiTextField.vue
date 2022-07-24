@@ -46,21 +46,21 @@ defineExpose({focusInput})
   position: relative;
   line-height: initial;
   height: initial;
-  padding: 24px 0;
+  padding: 1.5rem 0;
 
   .text-field {
     position:  relative;
 
     .text-field-label {
       transition: top 0.25s;
-      font-size: 16px;
+      font-size: 1rem;
       position: absolute;
       top: 8px;
       left: 0;
 
       &--is-active {
         color: #a3a3a3;
-        font-size: 14px;
+        font-size: 0.875rem;
         top: -8px;
       }
     }
@@ -119,7 +119,7 @@ defineExpose({focusInput})
 
   .counter {
     color: #a3a3a3;
-    font-size: 14px;
+    font-size: 0.875rem;
     position: absolute;
     bottom: 2px;
     right: 0;
