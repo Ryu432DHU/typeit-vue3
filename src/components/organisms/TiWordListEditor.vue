@@ -19,7 +19,7 @@
     <tr>
       <td>{{ localWords.length + 1}}</td>
       <td>
-        <ti-text-field v-model="wordToAdd" ref="wordInputField" placeholder="Type a new word"/>
+        <ti-text-field v-model="wordToAdd" ref="wordInputField" label="Type a new word here"/>
       </td>
       <td>
         <ti-button @click="addNewWord">Add</ti-button>

@@ -70,7 +70,7 @@ defineExpose({focusInput})
       &--is-active {
         color: #3b82f6;
         font-size: 0.875rem;
-        top: -8px;
+        top: -12px;
       }
     }
 
@@ -101,6 +101,7 @@ defineExpose({focusInput})
     input {
       background: transparent;
       box-sizing: border-box;
+      font-size: 1rem;
       padding: 8px 0;
       position: relative;
       width: 100%;
