@@ -1,6 +1,7 @@
 <template>
-  <div class="root">
+  <div class="ti-text-field">
     <div class="text-field" :class="{ 'text-field--error' : hasError }">
+      <span class="text-field-label" :class="{ 'text-field-label--is-active': shouldMoveLabel }">{{ textFieldLabel }}</span>
       <input type="text" @input="updateModelValue($event)" ref="textField" :value="modelValue" :placeholder="placeholder">
       <div class="border-bottom"></div>
     </div>
@@ -16,6 +17,7 @@ const props = defineProps<{
   modelValue: string,
   count?: number,
   disabled?: boolean,
+  label?: string,
   placeholder?: string,
   variant?: "standard" | "outlined" | "filled"
 }>()
@@ -24,20 +26,23 @@ const updateModelValue = (event:Event) => {
   emit('update:modelValue', (event.target as HTMLInputElement).value)
 }
 
+const shouldMoveLabel = computed(() => 0 < props.modelValue.length)
+
 const hasError = computed(() => doesExceedCount.value)
 const doesExceedCount = computed(() => {
  if(!props.count) return
  return props.count < props.modelValue.length
 })
 const counterText = computed(() => props.count ? `${props.modelValue.length} / ${props.count}` : '')
-
+const textFieldLabel = computed(() => props.label ? props.label : '')
 const textField = ref()
+
 const focusInput = () => textField.value.focus()
 defineExpose({focusInput})
 </script>
 
 <style scoped lang="scss">
-.root {
+.ti-text-field {
   position: relative;
   line-height: initial;
   height: initial;
@@ -45,6 +50,20 @@ defineExpose({focusInput})
 
   .text-field {
     position:  relative;
+
+    .text-field-label {
+      transition: top 0.25s;
+      font-size: 16px;
+      position: absolute;
+      top: 8px;
+      left: 0;
+
+      &--is-active {
+        color: #a3a3a3;
+        font-size: 14px;
+        top: -8px;
+      }
+    }
 
     &.text-field--error {
       &::before,
@@ -69,8 +88,7 @@ defineExpose({focusInput})
     input {
       background: transparent;
       box-sizing: border-box;
-      line-height: 2rem;
-      padding: 0;
+      padding: 8px 0;
       position: relative;
       width: 100%;
       outline: none;
@@ -100,6 +118,8 @@ defineExpose({focusInput})
   }  
 
   .counter {
+    color: #a3a3a3;
+    font-size: 14px;
     position: absolute;
     bottom: 2px;
     right: 0;
