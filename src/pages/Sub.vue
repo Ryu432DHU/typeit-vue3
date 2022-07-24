@@ -17,5 +17,5 @@
 import { ref } from 'vue'
 import TiTextField from '@/components/atoms/TiTextField.vue';
 
-const text = ref("Miku Hatsune")
+const text = ref("")
 </script>

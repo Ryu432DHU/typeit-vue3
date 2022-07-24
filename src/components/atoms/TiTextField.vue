@@ -62,7 +62,7 @@ defineExpose({focusInput})
     .text-field-label {
       color: #737373;
       font-size: 1rem;
-      transition: top 0.25s;
+      transition: top 0.25s, font-size 0.25s;
       position: absolute;
       top: 8px;
       left: 0;
