@@ -9,7 +9,10 @@
         ref="textField" :value="modelValue" :placeholder="placeholderText">
       <div class="border-bottom"></div>
     </div>
-    <span class="counter" :class="{ 'counter--error' : doesExceedCount }">{{ counterText }}</span>
+    <div class="text-field-details">
+      <span class="text-field-details-hint" :class="{'text-field-details-hint--is-active' : isTextFieldFocused}">{{ hintText }}</span>
+      <span class="counter" :class="{ 'counter--error' : doesExceedCount }">{{ counterText }}</span>
+    </div>
   </div>
 </template>
 
@@ -19,10 +22,11 @@ import { computed, ref } from 'vue';
 const emit = defineEmits(['update:modelValue'])
 const props = defineProps<{
   modelValue: string,
-  count?: number,
-  disabled?: boolean,
   label?: string,
   placeholder?: string,
+  count?: number,
+  hint?: string,
+  disabled?: boolean,
   variant?: "standard" | "outlined" | "filled"
 }>()
 
@@ -48,6 +52,7 @@ const textFieldLabelClass = computed(() => ({
   'text-field-label--is-active': shouldMoveLabel.value,
   'text-field-label--text-primary': isTextFieldFocused.value
 }))
+const hintText = computed(() => props.hint ? props.hint : '')
 
 const focusInput = () => textField.value.focus()
 defineExpose({focusInput})
@@ -135,17 +140,35 @@ defineExpose({focusInput})
     input:focus + .border-bottom {
       transform: scaleX(1);
     }
-  }  
+  }
 
-  .counter {
-    color: #a3a3a3;
-    font-size: 0.875rem;
-    position: absolute;
-    bottom: 2px;
-    right: 0;
+  .text-field-details {
+    display: flex;
 
-    &--error {
-      color: #ef4444;
+    &-hint {
+      color: #737373;
+      font-size: 0.875rem;
+      opacity: 0;
+      transition: opacity 0.25s, bottom 0.25s;
+      position: absolute;
+      bottom: 6px;
+
+      &--is-active {
+        opacity: 1;
+        bottom: 2px;
+      }
+    }
+
+    .counter {
+      color: #a3a3a3;
+      font-size: 0.875rem;
+      position: absolute;
+      bottom: 2px;
+      right: 0;
+
+      &--error {
+        color: #ef4444;
+      }
     }
   }
 }

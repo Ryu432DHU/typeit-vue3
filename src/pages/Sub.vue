@@ -7,6 +7,7 @@
         v-model="text"
         label="Who's your favorite character?"
         placeholder="Miku"
+        hint="This field uses counter prop"
         :count="12" /> 
     </div>
   </ti-sheet>
