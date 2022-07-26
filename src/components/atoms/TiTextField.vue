@@ -1,7 +1,7 @@
 <template>
   <div class="ti-text-field">
     <div class="text-field" :class="{ 'text-field--error' : hasError }">
-      <span class="text-field-label" :class="{ 'text-field-label--is-active': shouldMoveLabel }">{{ textFieldLabel }}</span>
+      <span class="text-field-label" :class="textFieldLabelClass">{{ textFieldLabel }}</span>
       <input type="text"
         @input="updateModelValue($event)"
         @focus="isTextFieldFocused = true"
@@ -44,6 +44,10 @@ const doesExceedCount = computed(() => {
 const counterText = computed(() => props.count ? `${props.modelValue.length} / ${props.count}` : '')
 const textFieldLabel = computed(() => props.label ? props.label : '')
 const textField = ref()
+const textFieldLabelClass = computed(() => ({
+  'text-field-label--is-active': shouldMoveLabel.value,
+  'text-field-label--text-primary': isTextFieldFocused.value
+}))
 
 const focusInput = () => textField.value.focus()
 defineExpose({focusInput})
@@ -68,9 +72,11 @@ defineExpose({focusInput})
       left: 0;
 
       &--is-active {
-        color: #3b82f6;
         font-size: 0.875rem;
         top: -12px;
+      }
+      &--text-primary {
+        color: #3b82f6;
       }
     }
 
