@@ -101,7 +101,7 @@ import { useWordLists } from '@/pages/composables/useWordLists'
 import { useTypingGame } from './composables/useTypingGame'
 
 const { wordLists, getWordList } = useWordLists()
-const wordListName = ref(wordLists[0].name)
+const wordListName = ref(wordLists.value[0].name)
 const wordList = computed(() => getWordList(wordListName.value))
 const selectWordListName = (newWordListName: string ) => {
   wordListName.value = newWordListName

@@ -35,7 +35,8 @@ const saveChanges = () => {
   const newWordList: WordList = {
     name: wordListName.value,
     words: words.value,
-    records: []
+    records: [],
+    isDeletable: true
   }
   updateWordList(originalWordListName.value, newWordList)
 }

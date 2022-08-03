@@ -56,7 +56,6 @@
 <script setup lang="ts">
 import { ref, inject } from 'vue'
 import { WordList } from '@/types';
-import TiButton from '@/components/atoms/TiButton.vue';
 
 const modalOpen = ref(false)
 const wordLists: WordList[] = inject("wordLists")!

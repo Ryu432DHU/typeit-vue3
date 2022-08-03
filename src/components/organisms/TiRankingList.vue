@@ -6,7 +6,7 @@
       <th>Time</th>
       <th>Date</th>
     </tr>
-    <tr>
+    <tr v-if="wordList.records[0]">
       <td>EX</td>
       <td >{{ wordList.words.length }} words</td>
       <td>{{ wordList.records[0].time }} seconds</td>
