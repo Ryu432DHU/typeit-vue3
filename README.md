@@ -1,7 +1,9 @@
-# Vue 3 + Vite
+# TypeIt 
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+TypeIt is an app for practicing touch typing.
 
-## Recommended IDE Setup
+You can add new word lists you want to pracrice typing.
 
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+This app depends on Vue 3 and Vue Router 4.
+
+Any pull requests are not accepted for now.
