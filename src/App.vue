@@ -4,35 +4,23 @@
 </template>
 
 <script setup lang="ts">
-import { WordList, WordListRecord } from './types';
-import { ref, onMounted, provide, watch, Ref } from 'vue';
+import { provide } from 'vue';
 import TiNavBar from './components/atoms/TiNavBar.vue';
-import fetchWordLists from './store/wordLists'
+import { useWordLists } from './pages/composables/useWordLists';
 
-let wordLists: Ref<WordList[]> = ref(fetchWordLists())
-const addTimeRecord = (wordListName: string, newRecord: WordListRecord) => {
-  const index = wordLists.value.findIndex(wordList =>wordList.name === wordListName)
-  if(index >= 0){
-    wordLists.value[index].records.push(newRecord)
-  }
-}
-const addWordList = (newWordList: WordList) => {
-  wordLists.value.push(newWordList)
-}
-const deleteWordLists = () => {
-  localStorage.clear()
-}
-const updateWordList = (wordListName: string, newWordList: WordList) => {
-  const targetWordListIndex = wordLists.value.findIndex(wordList => wordList.name === wordListName)
-  wordLists.value[targetWordListIndex].name = newWordList.name
-  wordLists.value[targetWordListIndex].words = newWordList.words
-  wordLists.value[targetWordListIndex].records = newWordList.records
-}
+const {
+  wordLists,
+  addWordList,
+  clearWordListsSavedInLocalStorage,
+  updateWordList,
+  addTimeRecord
+} = useWordLists()
+
 
 provide("wordLists", wordLists)
 provide("addTimeRecord", addTimeRecord)
 provide("addWordList", addWordList)
-provide("deleteWordLists", deleteWordLists)
+provide("deleteWordLists", clearWordListsSavedInLocalStorage)
 provide("updateWordList", updateWordList)
 
 </script>

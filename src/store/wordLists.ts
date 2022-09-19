@@ -2,6 +2,14 @@ import { WordList } from '../types'
 
 const wordlists: WordList[] = [
   {
+    name: "test",
+    words: ["a", "bc", "def"],
+    records: [
+      {date: "2022-07-16T11:17:20.477Z", time: 6.6}
+    ],
+    isDeletable: false
+  },
+  {
     name: "Colors",
     words: ["gray", "red", "orange", "amber", "yellow", "lime", "green", "emerald", "cyan", "blue", "indigo", "purple", "pink", "rose"],
     records: [
