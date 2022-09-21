@@ -11,7 +11,7 @@ const wordlists: WordList[] = [
   },
   {
     name: "Colors",
-    words: ["gray", "red", "orange", "amber", "yellow", "lime", "green", "emerald", "cyan", "blue", "indigo", "purple", "pink", "rose"],
+    words: ["gray", "red", "orange", "amber", "yellow"],
     records: [
       {date: "2022-07-16T11:17:20.477Z", time: 16.6}
     ],
@@ -19,7 +19,7 @@ const wordlists: WordList[] = [
   },
   {
     name: "原神 | モンド",
-    words: ["albed", "amber", "barbara", "bennett", "diluc", "diona", "eula", "fischl", "jean", "kaeya", "klee", "lisa", "mona", "noelle", "razor", "rosaria", "sucrose", "venti"],
+    words: ["albed", "amber", "barbara", "bennett", "diluc"],
     records: [
       {date: "2022-07-16T11:18:53.053Z", time: 25.8}
     ],
@@ -27,7 +27,7 @@ const wordlists: WordList[] = [
   },
   {
     name: "原神 | 璃月",
-    words: ["beidou", "chongyun", "ganyu", "hu tao", "keqing", "ningguang", "qiqi", "shenhe", "xiangling", "xiao", "xingqiu", "xinyan", "yanfei", "yelan", "yun jin", "zhongli"],
+    words: ["beidou", "chongyun", "ganyu", "hu tao", "keqing"],
     records: [
       {date: "2022-07-16T11:19:26.342Z", time: 29.6}
     ],
@@ -35,23 +35,23 @@ const wordlists: WordList[] = [
   },
   {
     name: "原神 | 稲妻",
-    words: ["arataki itto", "gorou", "kaedehara kazuha", "kamisato ayaka", "kamisato ayato", "kujou sara", "kuki shinobu", "raiden shogun", "sangonomiya kokomi", "sayu", "shikanoin heizou", "thoma", "yae miko", "yoimiya"],
+    words: ["arataki itto", "gorou", "kaedehara kazuha", "kamisato ayaka"],
     records: [
       {date: "2022-07-16T11:19:59.578Z", time: 30.1}
     ],
     isDeletable: false
   },
   {
-    name: "Arknights 1",
-    words: ["jessica", "haze", "ch'en", "amiya", "ifrit", "eyjafjalla", "vigna", "blaze", "savage", "projekt red"],
+    name: "アークナイツ 1",
+    words: ["jessica", "haze", "ch'en", "amiya", "ifrit", "eyjafjalla"],
     records: [
       {date: "2022-07-16T11:20:26.310Z", time: 22.3}
     ],
     isDeletable: false
   },
   {
-    name: "Arkinghts 2",
-    words: ["frostleaf", "vermeli", "cuora", "gitano", "rope", "exusiai", "angelina", "sussurro", "surtr", "schwarz"],
+    name: "アークナイツ 2",
+    words: ["frostleaf", "vermeli", "cuora", "gitano", "rope", "exusiai"],
     records: [
       {date: "2022-07-16T11:20:46.308Z", time: 17.1}
     ],
