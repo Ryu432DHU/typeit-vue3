@@ -15,6 +15,8 @@ const addTimeRecord = (wordListName: string, newRecord: WordListRecord) => {
   const index = wordLists.value.findIndex(wordList =>wordList.name === wordListName)
   if(index >= 0){
     wordLists.value[index].records.push(newRecord)
+  } else {
+    throw new Error('The word list is not found')
   }
 }
 const addWordList = (newWordList: WordList) => {
