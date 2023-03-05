@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import { router } from './router/routes'
+import store from './store/wordLists'
 import "./index.scss"
 
 import TiButton from '@/components/atoms/TiButton.vue'
@@ -13,6 +14,7 @@ import TiNavigationDrawer from '@/components/atoms/TiNavigationDrawer.vue';
 
 const app = createApp(App)
 app.use(router)
+app.use(store)
 app.component('ti-button', TiButton)
 app.component('ti-sheet', TiSheet)
 app.component('ti-text-field', TiTextField)

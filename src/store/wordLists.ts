@@ -1,6 +1,7 @@
+import { createStore } from 'vuex'
 import { WordList } from '../types'
 
-const wordlists: WordList[] = [
+const wordLists: WordList[] = [
   {
     name: "Colors",
     words: ["gray", "red", "orange", "amber", "yellow", "lime", "green", "emerald", "cyan", "blue", "indigo", "purple", "pink", "rose"],
@@ -51,6 +52,20 @@ const wordlists: WordList[] = [
   }
 ]
 
-export default function fetchwordlists(){
-  return wordlists
-}
+const store = createStore({
+  state(){
+    return {
+      wordLists: wordLists
+    }
+  },
+  getters: {
+    wordLists: state => state.wordLists,
+    findWordList: (state, wordListName: string) => {
+      const targetWordList = state.wordLists.filter(wordList => wordListName === wordList.name)
+
+      return targetWordList.length ? targetWordList : null
+    }
+  }
+})
+
+export default store

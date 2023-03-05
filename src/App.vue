@@ -6,10 +6,11 @@
 <script setup lang="ts">
 import { WordList, WordListRecord } from './types';
 import { ref, onMounted, provide, watch, Ref } from 'vue';
+import { useStore } from 'vuex';
 import TiNavBar from './components/atoms/TiNavBar.vue';
-import fetchWordLists from './store/wordLists'
 
-let wordLists: Ref<WordList[]> = ref(fetchWordLists())
+const store = useStore()
+const wordLists: Ref<WordList[]> = ref(store.getters.wordLists)
 const addTimeRecord = (wordListName: string, newRecord: WordListRecord) => {
   const index = wordLists.value.findIndex(wordList =>wordList.name === wordListName)
   if(index >= 0){
