@@ -20,15 +20,14 @@ import { ref, inject } from 'vue';
 import { useRouter } from 'vue-router';
 import TiTextField from '@/components/atoms/TiTextField.vue';
 import { WordList } from '@/types';
-import { useWordLists } from './composables/useWordLists';
 import TiWordListEditor from '@/components/organisms/TiWordListEditor.vue';
+import { useStore } from 'vuex';
 
+const store = useStore()
 const router = useRouter()
-const { getWordList } = useWordLists()
-
 const originalWordListName = ref(String(router.currentRoute.value.params.id))
 const wordListName = ref(String(router.currentRoute.value.params.id))
-const words = ref([...getWordList(originalWordListName.value).words])
+const words = ref([...store.getters.findWordList(originalWordListName.value).words])
 
 const updateWordList: Function = inject('updateWordList')!
 const saveChanges = () => {

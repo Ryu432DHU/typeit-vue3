@@ -1,6 +1,7 @@
+import { createStore } from 'vuex'
 import { WordList } from '../types'
 
-const wordlists: WordList[] = [
+const wordLists: WordList[] = [
   {
     name: "test",
     words: ["a", "bc", "def"],
@@ -59,6 +60,23 @@ const wordlists: WordList[] = [
   }
 ]
 
-export default function fetchwordlists(){
-  return wordlists
-}
+const store = createStore({
+  state(){
+    return {
+      wordLists: wordLists
+    }
+  },
+  getters: {
+    wordLists: state => state.wordLists,
+    findWordList: state => (wordListName: string) => {
+      const targetWordList = state.wordLists.filter(wordList => wordListName === wordList.name)
+
+      return targetWordList.length ? targetWordList[0] : new Error('The word list is not found')
+    },
+    findWordListIndex: state => (wordListName: string) => {
+      return state.wordLists.findIndex(wordList => wordListName === wordList.name)
+    }
+  },
+})
+
+export default store
