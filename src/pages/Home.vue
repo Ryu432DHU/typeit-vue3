@@ -92,17 +92,18 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+import { useStore } from 'vuex'
 import TiWordChipList from '@/components/organisms/TiWordChipList.vue'
 import TiWordDisplay from '@/components/organisms/TiWordDisplay.vue'
 import TiWordInputForm from '@/components/organisms/TiWordInputForm.vue'
 import TiWordListSelector from '@/components/organisms/TiWordListSelector.vue'
 import TiRankingList from '@/components/organisms/TiRankingList.vue'
-import { useWordLists } from '@/pages/composables/useWordLists'
 import { useTypingGame } from './composables/useTypingGame'
 
-const { wordLists, getWordList } = useWordLists()
+const store = useStore()
+const wordLists = computed(() => store.getters.wordLists)
 const wordListName = ref(wordLists.value[0].name)
-const wordList = computed(() => getWordList(wordListName.value))
+const wordList = computed(() => store.getters.findWordList(wordListName.value))
 const selectWordListName = (newWordListName: string ) => {
   wordListName.value = newWordListName
   initializeGame()

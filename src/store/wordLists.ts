@@ -60,12 +60,15 @@ const store = createStore({
   },
   getters: {
     wordLists: state => state.wordLists,
-    findWordList: (state, wordListName: string) => {
+    findWordList: state => (wordListName: string) => {
       const targetWordList = state.wordLists.filter(wordList => wordListName === wordList.name)
 
-      return targetWordList.length ? targetWordList : null
+      return targetWordList.length ? targetWordList[0] : new Error('The word list is not found')
+    },
+    findWordListIndex: state => (wordListName: string) => {
+      return state.wordLists.findIndex(wordList => wordListName === wordList.name)
     }
-  }
+  },
 })
 
 export default store
