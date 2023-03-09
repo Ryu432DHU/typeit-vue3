@@ -84,8 +84,12 @@ const store = createStore({
   },
   actions: {
     tryUpdatingWordList({ commit, getters }, newWordList: WordList){
-      if(getters.findWordListIndexByName(newWordList) <= 0){
-        commit('updateWordList', newWordList)
+      if(getters.findWordListIndexByName(newWordList.name) >= 0){
+        console.log(newWordList)
+        commit('updateWordList', {
+          wordListIndex: getters.findWordListIndexByName(newWordList.name),
+          newWordList
+        })
       } else {
         throw new Error('Failed to update word list. The word list not found.')
       }

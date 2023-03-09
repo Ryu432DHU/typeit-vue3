@@ -12,7 +12,7 @@ import TiNavBar from './components/atoms/TiNavBar.vue';
 const store = useStore()
 const wordLists: Ref<WordList[]> = ref(store.getters.wordLists)
 const addTimeRecord = (wordListName: string, newRecord: WordListRecord) => {
-  const index = store.getters.findWordListIndex(wordListName)
+  const index = store.getters.findWordListIndexByName(wordListName)
   if(index >= 0){
     wordLists.value[index].records.push(newRecord)
   } else {
@@ -25,11 +25,8 @@ const addWordList = (newWordList: WordList) => {
 const deleteWordLists = () => {
   localStorage.clear()
 }
-const updateWordList = (wordListName: string, newWordList: WordList) => {
-  const targetWordListIndex = wordLists.value.findIndex(wordList => wordList.name === wordListName)
-  wordLists.value[targetWordListIndex].name = newWordList.name
-  wordLists.value[targetWordListIndex].words = newWordList.words
-  wordLists.value[targetWordListIndex].records = newWordList.records
+const updateWordList = (newWordList: WordList) => {
+  store.dispatch('tryUpdatingWordList', newWordList)
 }
 
 provide("wordLists", wordLists)

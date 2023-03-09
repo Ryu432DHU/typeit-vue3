@@ -27,7 +27,7 @@ const store = useStore()
 const router = useRouter()
 const originalWordListName = ref(String(router.currentRoute.value.params.id))
 const wordListName = ref(String(router.currentRoute.value.params.id))
-const words = ref([...store.getters.findWordList(originalWordListName.value).words])
+const words = ref([...store.getters.findWordListByName(originalWordListName.value).words])
 
 const updateWordList: Function = inject('updateWordList')!
 const saveChanges = () => {
@@ -37,7 +37,7 @@ const saveChanges = () => {
     records: [],
     isDeletable: true
   }
-  updateWordList(originalWordListName.value, newWordList)
+  updateWordList(newWordList)
 }
 
 </script>

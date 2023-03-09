@@ -99,7 +99,7 @@ import { useTypingGame } from './composables/useTypingGame'
 const store = useStore()
 const wordLists = computed(() => store.getters.wordLists)
 const wordListName = ref(wordLists.value[0].name)
-const wordList = computed(() => store.getters.findWordList(wordListName.value))
+const wordList = computed(() => store.getters.findWordListByName(wordListName.value))
 const selectWordListName = (newWordListName: string ) => {
   wordListName.value = newWordListName
   initializeGame()
