@@ -68,12 +68,12 @@ const store = createStore({
   },
   getters: {
     wordLists: state => state.wordLists,
-    findWordList: state => (wordListName: string) => {
+    findWordListByName: state => (wordListName: string) => {
       const targetWordList = state.wordLists.filter(wordList => wordListName === wordList.name)
 
       return targetWordList.length ? targetWordList[0] : new Error('The word list is not found')
     },
-    findWordListIndex: state => (wordListName: string) => {
+    findWordListIndexByName: state => (wordListName: string) => {
       return state.wordLists.findIndex(wordList => wordListName === wordList.name)
     }
   },
@@ -84,7 +84,7 @@ const store = createStore({
   },
   actions: {
     tryUpdatingWordList({ commit, getters }, newWordList: WordList){
-      if(getters.findWordListIndex <= 0){
+      if(getters.findWordListIndexByName(newWordList) <= 0){
         commit('updateWordList', newWordList)
       } else {
         throw new Error('Failed to update word list. The word list not found.')
