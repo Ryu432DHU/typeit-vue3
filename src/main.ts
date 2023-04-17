@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+import { store } from '@/store/store'
 import { router } from './router/routes'
-import store from './store/wordLists'
 import "./index.scss"
 
 import TiButton from '@/components/atoms/TiButton.vue'

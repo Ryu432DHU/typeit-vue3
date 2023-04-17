@@ -88,13 +88,13 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { useStore } from 'vuex'
 import TiWordChipList from '@/components/organisms/TiWordChipList.vue'
 import TiWordDisplay from '@/components/organisms/TiWordDisplay.vue'
 import TiWordInputForm from '@/components/organisms/TiWordInputForm.vue'
 import TiWordListSelector from '@/components/organisms/TiWordListSelector.vue'
 import TiRankingList from '@/components/organisms/TiRankingList.vue'
 import { useTypingGame } from './composables/useTypingGame'
+import { useStore } from '@/store/store'
 
 const store = useStore()
 const wordLists = computed(() => store.getters.wordLists)
