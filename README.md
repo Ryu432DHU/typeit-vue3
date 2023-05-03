@@ -11,9 +11,7 @@ Any pull requests are not accepted for now.
 ## Features
 
 * Improve your typing skills
-* Measure your typing speed
+* Measure / Show your typing speed
 * Highlight if the input is correct or incorrect
-* Show your typing speed
 * List your time records
-* Add your own word lists
-* Edit your own word lists
+* Add / Edit / Delete your own word lists
