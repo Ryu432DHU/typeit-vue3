@@ -6,7 +6,6 @@ import { wordLists } from "./wordLists"
 
 export interface State {
   wordLists: WordList[],
-
 }
 
 export const key: InjectionKey<Store<State>> = Symbol()
@@ -18,7 +17,9 @@ export const store = createStore<State>({
     }
   },
   getters: {
-    wordLists: state => state.wordLists,
+    wordLists(state): WordList[]{
+      return state.wordLists
+    },
     findWordListByName: state => (wordListName: string) => {
       const targetWordList = state.wordLists.filter(wordList => wordListName === wordList.name)
 

@@ -6,7 +6,7 @@
 <script setup lang="ts">
 import { WordList, WordListRecord } from './types';
 import { ref, provide, Ref } from 'vue';
-import { useStore } from 'vuex';
+import { useStore } from '@/store/store';
 import TiNavBar from './components/atoms/TiNavBar.vue';
 
 const store = useStore()
