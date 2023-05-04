@@ -21,7 +21,7 @@ import { useRouter } from 'vue-router';
 import TiTextField from '@/components/atoms/TiTextField.vue';
 import { WordList } from '@/types';
 import TiWordListEditor from '@/components/organisms/TiWordListEditor.vue';
-import { useStore } from 'vuex';
+import { useStore } from '@/store/store';
 
 const store = useStore()
 const router = useRouter()
