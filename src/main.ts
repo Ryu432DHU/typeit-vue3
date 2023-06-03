@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+import { i18n } from '@/i18n/index'
 import App from './App.vue'
 import { store, key } from '@/store/store'
 import { router } from './router/routes'
@@ -13,6 +14,7 @@ import TiDialog from '@/components/atoms/TiDialog.vue'
 import TiNavigationDrawer from '@/components/atoms/TiNavigationDrawer.vue';
 
 const app = createApp(App)
+app.use(i18n)
 app.use(router)
 app.use(store, key)
 app.component('ti-button', TiButton)

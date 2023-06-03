@@ -17,7 +17,7 @@
       <div class="lg:flex w-11/12 mx-auto lg:justify-between">
         <div class="sm:w-full lg:w-6/12 mb-4">
           <div class="w-11/12">
-            <h2 class="text-2xl mb-4">Rankings</h2>
+            <h2 class="text-2xl mb-4">{{ $t('home.rankings' ) }}</h2>
             <ti-ranking-list :wordList="wordList"></ti-ranking-list>
           </div>
         </div>
