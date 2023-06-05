@@ -1,18 +1,18 @@
 <template>
   <ti-sheet class="mb-8">
     <div class="w-11/12 mx-auto py-4">
-      <h1 class="text-2xl mb-6">Edit word lists</h1>
+      <h1 class="text-2xl mb-6">{{  $t('edit.pageTitle') }}</h1>
       <ti-simple-table>
         <tr>
-          <th>Name</th>
-          <th>Length</th>
-          <th>Time Records</th>
-          <th>Action</th>
+          <th>{{ $t('edit.table.name') }}</th>
+          <th>{{ $t('edit.table.length') }}</th>
+          <th>{{ $t('edit.table.timeRecords') }}</th>
+          <th>{{ $t('edit.table.action') }}</th>
         </tr>
         <tr v-for="(wordList, index) in wordLists" :key="index">
           <td>{{ wordList.name }}</td>
-          <td>{{ wordList.words.length }} words</td>
-          <td>{{ wordList.records.length }} records</td>
+          <td>{{ wordList.words.length }} {{  $t('edit.table.wordListLength') }}</td>
+          <td>{{ wordList.records.length }} {{ $t('edit.table.recordLength') }}</td>
           <td>
             <router-link :to="'/edit/' + wordList.name">
               <ti-button>Edit</ti-button>

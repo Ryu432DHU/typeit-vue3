@@ -1,15 +1,15 @@
 <template>
   <ti-sheet>
     <div class="w-11/12 mx-auto py-4">
-      <h1 class="text-2xl mb-6">Rankings</h1>
+      <h1 class="text-2xl mb-6">{{  $t('rankings.rankings') }}</h1>
       <div v-for="wordList in wordLists" class="mb-8">
         <h2 class="text-lg">{{ wordList.name }}</h2>
         <TiSimpleTable>
           <tr>
-            <th>No.</th>
-            <th>Length</th>
-            <th>Time</th>
-            <th>Date</th>
+            <th>{{ $t('rankings.table.no') }}</th>
+            <th>{{ $t('rankings.table.length') }}</th>
+            <th>{{ $t('rankings.table.time') }}</th>
+            <th>{{ $t('rankings.table.date') }}</th>
           </tr>
           <tr v-for="(record, index) in wordList.records">
             <td>{{ index + 1 }}</td>

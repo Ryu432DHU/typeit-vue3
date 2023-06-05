@@ -11,7 +11,7 @@
       </template>
     <div class="container mx-auto my-4 pb-8">
       <div class="w-11/12 mx-auto mb-4">
-        <h2 class="text-2xl mb-4">Words | {{ wordListName }}</h2>
+        <h2 class="text-2xl mb-4">{{ $t('home.words' )}} | {{ wordListName }}</h2>
         <ti-word-chip-list :wordList="wordList.words" :currentWordIndex="currentWordIndex"></ti-word-chip-list>
       </div>
       <div class="lg:flex w-11/12 mx-auto lg:justify-between">
@@ -23,7 +23,7 @@
         </div>
         <div class="sm:w-full lg:w-6/12">
           <div class="w-11/12">
-            <h2 class="text-2xl mb-4">Word lists</h2>
+            <h2 class="text-2xl mb-4">{{ $t('home.wordLists') }}</h2>
             <ti-word-list-selector @selectWordList="selectWordListName" :wordLists="wordLists" :selectedWordList="wordList" />
           </div>
         </div>
