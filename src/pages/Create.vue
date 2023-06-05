@@ -2,8 +2,8 @@
   <ti-sheet>
     <div class="w-11/12 mx-auto py-4">
       <template v-if="!isWordListCreated">
-      <h1 class="text-2xl mb-4">Create a new word list</h1>
-      <ti-text-field v-model="wordListName" placeholder="Type the word list name" />
+      <h1 class="text-2xl mb-4">{{  $t('create.createNewWordList') }}</h1>
+      <ti-text-field v-model="wordListName" :placeholder="$t('create.newWordListTitle')" />
       <p v-if="!isWordListNameAvailable">The word list  "{{ wordListName }}" already existis.</p>
       <ti-word-list-editor v-model="words" />
         <p>{{ words }}</p>
@@ -13,9 +13,9 @@
         <h1 class="text-2xl mb-4">The word list "{{ wordListName }}" has been created successfully</h1>
         <ti-simple-table>
           <tr>
-            <th>No.</th>
-            <th>Word</th>
-            <th>Length</th>
+            <th>{{ $t('create.table.no') }}</th>
+            <th>{{ $t('create.table.word') }}</th>
+            <th>{{ $t('create.table.actions') }}</th>
           </tr>
           <tr v-for="(word, index) in words">
             <td>{{ index + 1}}</td>
